@@ -1,0 +1,13 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: none;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+:root {
+  --bg-color-header: rgb(2, 2, 66);
+  --color-header: #fff;
+  --bg-color-sidebar: rgb(88, 88, 88);
+  --bg-color-brightness: rgba(0, 0, 0, 0.5);
+}

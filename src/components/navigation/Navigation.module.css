@@ -1,0 +1,70 @@
+/* Burger-Button */
+.burger_btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--color-header);
+}
+
+/* Overlay */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: var(--bg-color-brightness);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  z-index: 90;
+}
+
+.overlay_visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Sidebar */
+.sidebar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 80%;
+  max-width: 320px;
+  background: var(--bg-color-header);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 2rem 1.5rem;
+  transform: translateX(100%);
+  transition: transform 0.3s ease;
+  z-index: 100;
+  box-shadow: -4px 0 24px rgba(0, 0, 0, 0.15);
+}
+
+.sidebar_open {
+  transform: translateX(0);
+}
+
+.sidebar a {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--color-header);
+  text-decoration: none;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid #eee;
+}
+
+.close_btn {
+  align-self: flex-end;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  margin-bottom: 1rem;
+  color: var(--color-header);
+}

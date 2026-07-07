@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import HeaderComponent from "@/components/header/Header";
 
 export const metadata: Metadata = {
   title: "Note Tracker - For Students",
@@ -13,7 +14,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <HeaderComponent/>
+        <main>{children}</main>
+        </body>
     </html>
   );
 }
