@@ -1,5 +1,6 @@
 import styles from "./Navigation.module.css";
 import NavLinks from "./NavLinks";
+import Image from "next/image";
 
 type Props = {
   isOpen: boolean;
@@ -19,7 +20,30 @@ export default function Sidebar({ isOpen, onClose }: Props) {
       >
         ✕
       </button>
-      <NavLinks onLinkClick={onClose} />
+      <div className={styles.sidebar_grid}>
+        <div className={styles.sidebar_grid_up}>
+          <NavLinks onLinkClick={onClose} />
+          <button>Logout</button>
+        </div>
+        <div className={styles.sidebar_grid_down}>
+          <button>
+            <Image
+              src={"/assets/settings.png"}
+              alt="settings"
+              width={40}
+              height={40}
+            ></Image>
+          </button>
+          <button>
+            <Image
+              src={"/assets/account.png"}
+              alt="account"
+              width={40}
+              height={40}
+            ></Image>
+          </button>
+        </div>
+      </div>
     </nav>
   );
 }

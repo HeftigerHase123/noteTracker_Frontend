@@ -6,8 +6,8 @@ type Props = {
 
 const links = [
   { href: "/", label: "Home" },
-  { href: "/about", label: "Über uns" },
-  { href: "/contact", label: "Kontakt" },
+  { href: "/about", label: "About us" },
+  { href: "/contact", label: "Contact" },
 ];
 
 export default function NavLinks({ onLinkClick }: Props) {
