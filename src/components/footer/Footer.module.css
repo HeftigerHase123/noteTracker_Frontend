@@ -1,0 +1,26 @@
+.footer {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+    gap: 2rem;
+    padding: 2rem;
+    background-color: var(--bg-color-header);
+    color: var(--color-header);
+}
+
+.links {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    justify-content: center;
+}
+
+.links a {
+    color: var(--color-header);
+    text-decoration: none;
+}
+
+.links a:hover {
+    filter: brightness(60%);
+}

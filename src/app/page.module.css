@@ -18,7 +18,7 @@
   top: 0;
   width: auto;
   height: 22rem;
-  filter: brightness(0.6) sepia(1) hue-rotate(180deg) saturate(3);
+  filter: brightness(0.3) sepia(1) hue-rotate(180deg) saturate(3);
 }
 
 .title,

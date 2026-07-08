@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import HeaderComponent from "@/components/header/Header";
+import FooterComponent from "@/components/footer/Footer";
 
 export const metadata: Metadata = {
   title: "Note Tracker - For Students",
@@ -12,13 +13,13 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return(
-  <html lang="en">
-    <body>
+  return (
+    <html lang="en">
+      <body>
         <HeaderComponent />
         <main>{children}</main>
-    </body>
-  </html>
-
+        <FooterComponent />
+      </body>
+    </html>
   );
 }
