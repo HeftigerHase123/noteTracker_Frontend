@@ -1,7 +1,6 @@
 .page {
   padding: 2rem;
   height: calc(100vh - 8rem);
-  background-color: var(--bg-color-main);
   color: var(--color-header);
   position: relative;
   overflow: hidden;
