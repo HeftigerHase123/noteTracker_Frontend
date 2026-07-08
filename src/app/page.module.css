@@ -3,25 +3,48 @@
   background: linear-gradient(90deg, rgba(26, 116, 249), rgba(35, 49, 113));
   height: calc(100vh - 8rem);
   color: var(--color-header);
+  position: relative;
+  overflow: hidden;
 }
 
-.page div {
+.img_container {
+  inset: 0;
+  z-index: -1;
+}
+
+.img_container img {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: auto;
+  height: 22rem;
+  filter: brightness(0.6) sepia(1) hue-rotate(180deg) saturate(3);
+}
+
+.title,
+.features {
   margin-bottom: 2rem;
 }
 
 .title {
+  position: relative;
+  z-index: 1;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   gap: 1rem;
+  margin-top: 1rem;
 }
 
 .register {
+  position: relative;
+  z-index: 1;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  margin-bottom: 3rem;
 }
 
 .register button {
@@ -51,4 +74,8 @@
 
 .feature h4 {
   margin-bottom: 1rem;
+}
+
+.feature {
+  margin-bottom: 1.5rem;
 }
