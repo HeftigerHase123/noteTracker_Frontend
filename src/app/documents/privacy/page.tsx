@@ -1,8 +1,10 @@
-import sryles from "./page.module.css";
+import styles from "./page.module.css";
 
 export default function Privacy() {
     
     return(
-        <></>
+        <div className={styles.page}>
+            
+        </div>
     );
 }

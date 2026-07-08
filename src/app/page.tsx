@@ -22,7 +22,7 @@ export default function Landing() {
           <h4>Grade Tracking</h4>
           <div>
             <Image
-              src={"/assets/tracking.png"}
+              src={"/assets/tracking_black.png"}
               alt="tracking"
               width={64}
               height={64}
@@ -36,7 +36,7 @@ export default function Landing() {
           <h4>Average Calculation</h4>
           <div>
             <Image
-              src={"/assets/edit.png"}
+              src={"/assets/edit_black.png"}
               alt="tracking"
               width={64}
               height={64}
@@ -51,7 +51,7 @@ export default function Landing() {
           <h4>Export Grades</h4>
           <div>
             <Image
-              src={"/assets/export.png"}
+              src={"/assets/export_black.png"}
               alt="tracking"
               width={64}
               height={64}

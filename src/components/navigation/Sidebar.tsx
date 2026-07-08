@@ -28,7 +28,7 @@ export default function Sidebar({ isOpen, onClose }: Props) {
         <div className={styles.sidebar_grid_down}>
           <button>
             <Image
-              src={"/assets/settings.png"}
+              src={"/assets/settings_black.png"}
               alt="settings"
               width={40}
               height={40}
@@ -36,7 +36,7 @@ export default function Sidebar({ isOpen, onClose }: Props) {
           </button>
           <button>
             <Image
-              src={"/assets/account.png"}
+              src={"/assets/account_black.png"}
               alt="account"
               width={40}
               height={40}
