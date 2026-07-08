@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 
 export default function HeaderComponent() {
 
-    const HIDDEN_ROUTES = ["/"];
+    const HIDDEN_ROUTES = [""];
     const pathname = usePathname();
 
     if (HIDDEN_ROUTES.includes(pathname)) {

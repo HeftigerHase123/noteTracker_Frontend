@@ -1,0 +1,54 @@
+.page {
+  padding: 2rem;
+  background: linear-gradient(90deg, rgba(26, 116, 249), rgba(35, 49, 113));
+  height: calc(100vh - 8rem);
+  color: var(--color-header);
+}
+
+.page div {
+  margin-bottom: 2rem;
+}
+
+.title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.register {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.register button {
+  padding: 1rem 2rem;
+  margin-top: 1rem;
+  border-radius: 2rem;
+  border: none;
+  background-color: rgba(255, 100, 150);
+  color: #fff;
+}
+
+.features_title {
+  margin-bottom: 1rem;
+}
+
+.features {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  gap: 1rem;
+}
+
+.feature div {
+    display: grid;
+    grid-template-columns: 64px auto;
+    gap: 2rem;
+}
+
+.feature h4 {
+  margin-bottom: 1rem;
+}

@@ -23,7 +23,7 @@ export default function Sidebar({ isOpen, onClose }: Props) {
       <div className={styles.sidebar_grid}>
         <div className={styles.sidebar_grid_up}>
           <NavLinks onLinkClick={onClose} />
-          <button>Logout</button>
+          <button>Login</button>
         </div>
         <div className={styles.sidebar_grid_down}>
           <button>
