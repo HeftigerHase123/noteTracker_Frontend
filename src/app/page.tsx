@@ -1,26 +1,23 @@
-"use client";
 import styles from "./page.module.css";
-import { useTranslations } from "next-intl";
 import Image from "next/image";
 
 export default function Landing() {
-  const t = useTranslations();
 
   return (
     <div className={styles.page}>
       <div className={styles.title}>
-        <h1>{t("landing.title")}</h1>
-        <h3>{t("landing.subtitle")}</h3>
+        <h1>Keep track of your grades</h1>
+        <h3>Enter your grades and track your progress.</h3>
       </div>
       <div className={styles.register}>
-        <p>{t("landing.finalCta")}</p>
-        <p>{t("landing.registerCta")}</p>
-        <button>{t("landing.register")}</button>
+        <p>Ready to track your grade average?</p>
+        <p>Register for free now</p>
+        <button>Register</button>
       </div>
-      <h3 className={styles.features_title}>{t("landing.features.title")}</h3>
+      <h3 className={styles.features_title}>What to expect</h3>
       <div className={styles.features}>
         <div className={styles.feature}>
-          <h4>{t("landing.features.tracking.title")}</h4>
+          <h4>Grade Tracking</h4>
           <div>
             <Image
               src={"/assets/tracking.png"}
@@ -28,7 +25,7 @@ export default function Landing() {
               width={64}
               height={64}
             ></Image>
-            <p>{t("landing.features.tracking.text")}</p>
+            <p>Enter your grades and always keep track of your average grade.</p>
           </div>
         </div>
       </div>
