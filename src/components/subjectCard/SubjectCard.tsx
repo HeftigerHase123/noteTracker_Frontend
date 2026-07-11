@@ -1,21 +1,23 @@
+import { Subject } from "@/types/Subject";
 import styles from "./SubjectCard.module.css";
-
-
-type Object = {
-    subject: string;
-    grades: number[];
-}
+import Image from "next/image";
 
 type Props = {
-    props: Object;
+  subject: Subject;
 };
 
-
-export default function SubjectCardComponent({ props }: Props) {
-    
-    return(
-        <div className={styles.page}>
-            <h1>Hallo</h1>
-        </div>
-    );
+export default function SubjectCardComponent({ subject }: Props) {
+  return (
+    <div className={styles.page}>
+      <h3>{subject.name}</h3>
+      <div className={styles.img_circle}>
+        <Image
+          src={"/assets/pfeil_black.png"}
+          alt="arrow"
+          width={32}
+          height={32}
+        ></Image>
+      </div>
+    </div>
+  );
 }

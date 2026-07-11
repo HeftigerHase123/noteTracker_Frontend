@@ -1,0 +1,17 @@
+.page {
+    border: 3px solid black;
+    padding: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.img_circle {
+    border-radius: 50%;
+    border: 2px solid black;
+    overflow: hidden;
+    padding: 0.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
