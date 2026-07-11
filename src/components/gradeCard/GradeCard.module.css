@@ -1,0 +1,6 @@
+.page p{
+    display: inline-flex;
+    border-radius: 2rem;
+    padding: 2px 6px;
+    color: var(--color-white);
+}

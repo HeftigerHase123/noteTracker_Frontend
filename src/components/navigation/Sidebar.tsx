@@ -24,12 +24,12 @@ export default function Sidebar({ isOpen, onClose }: Props) {
         <div className={styles.sidebar_grid_up}>
           <h2>Note Tracker</h2>
           <NavLinks onLinkClick={onClose} />
-          <button>Login</button>
+          <button className="primary-btn">Login</button>
         </div>
         <div className={styles.sidebar_grid_down}>
           <button>
             <Image
-              src={"/assets/settings_black.png"}
+              src={"/assets/settings.png"}
               alt="settings"
               width={40}
               height={40}
@@ -37,7 +37,7 @@ export default function Sidebar({ isOpen, onClose }: Props) {
           </button>
           <button>
             <Image
-              src={"/assets/account_black.png"}
+              src={"/assets/account.png"}
               alt="account"
               width={40}
               height={40}

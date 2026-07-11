@@ -12,7 +12,6 @@ export default async function Dashboard() {
     if (!session) redirect("/404");
 
     const subjects = await SubjectsAPI.readAll();
-    console.log(subjects);
     
     return(
         <div className={styles.page}>

@@ -2,14 +2,22 @@
 import { cookies } from "next/headers"
 import { cache } from "react"
 import { decodeJwt } from "jose";
+import { Session } from "@/types/Session";
 
-export const verifySession = cache(async () => {
+
+interface SessionClaims {
+    id: number;
+    sub: string;
+    role: number;
+}
+
+export const verifySession = cache(async (): Promise<Session | null> => {
     const cookieStore = await cookies();
     const accessToken = cookieStore.get("session")?.value;
 
     if (!accessToken) return null;
 
-    const claims = decodeJwt(accessToken);
+    const claims = decodeJwt(accessToken) as SessionClaims;
     return {
         accessToken,
         user: {

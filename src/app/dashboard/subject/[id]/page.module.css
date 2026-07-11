@@ -1,0 +1,54 @@
+.page {
+    padding: 2rem;
+}
+
+.title {
+    margin-bottom: 3rem;
+}
+
+.details_pannel {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.average {
+    border-radius: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--color-white);
+    padding: 2px 6px;
+}
+
+.grades {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.subtitle {
+    margin-bottom: 1rem;
+}
+
+.buttons{
+    display: flex;
+    gap: 1rem;
+}
+
+.buttons button {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    border-radius: 2rem;
+    padding: 0.5rem 1rem;
+    border: none;
+    background-color: var(--color-primary);
+    color: var(--color-white);
+}
+
+.buttons button:hover {
+    filter: brightness(75%);
+}

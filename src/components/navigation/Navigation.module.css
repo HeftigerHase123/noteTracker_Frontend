@@ -8,7 +8,8 @@
   background: none;
   border: none;
   cursor: pointer;
-  color: var(--color-header);
+  color: var(--color-white);
+  padding: 0;
 }
 
 /* Overlay */
@@ -47,6 +48,7 @@
 }
 
 .sidebar_grid_up {
+  color: var(--color-white);
   display: flex;
   flex-direction: column;
   gap: 1rem;
@@ -80,10 +82,10 @@
 .sidebar a {
   font-size: 1.1rem;
   font-weight: 500;
-  color: var(--color-header);
+  color: var(--color-white);
   text-decoration: none;
   padding: 0.75rem 0;
-  border-bottom: 1px solid var(--color-black);
+  border-bottom: 1px solid var(--color-white);
 }
 
 .close_btn {
@@ -93,7 +95,7 @@
   font-size: 1.5rem;
   cursor: pointer;
   margin-bottom: 1rem;
-  color: var(--color-header);
+  color: var(--color-white);
 }
 
 .sidebar_grid_down button {
