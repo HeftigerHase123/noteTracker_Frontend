@@ -4,3 +4,20 @@
     padding: 2px 6px;
     color: var(--color-white);
 }
+
+.page {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.page input{
+    background: none;
+    padding: 0 0.5rem;
+    width: auto;
+}
+
+.page button {
+    border-radius: 2rem;
+    padding: 0.15rem 1rem;
+}

@@ -3,8 +3,8 @@ import styles from "./page.module.css";
 import { GradesAPI } from "@/lib/api/Grades";
 import { verifySession } from "@/lib/session";
 import { redirect } from "next/navigation";
-import GradeCardComponent from "@/components/gradeCard/GradeCard";
 import Image from "next/image";
+import GradeCardFeed from "@/components/gradeCard/GradeCardFeed";
 
 type Props = {
   params: Promise<{
@@ -55,7 +55,7 @@ export default async function SubjectDetailPage({ params }: Props) {
       <h4 className={styles.subtitle}>Grades:</h4>
       <div className={styles.grades}>
         {gradesBySubject.map((grade) => {
-          return <GradeCardComponent key={grade.id} grade={grade} />;
+          return <GradeCardFeed key={grade.id} grade={grade} />;
         })}
       </div>
       <div className={styles.buttons}>
