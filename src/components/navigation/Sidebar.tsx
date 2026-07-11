@@ -22,6 +22,7 @@ export default function Sidebar({ isOpen, onClose }: Props) {
       </button>
       <div className={styles.sidebar_grid}>
         <div className={styles.sidebar_grid_up}>
+          <h2>Note Tracker</h2>
           <NavLinks onLinkClick={onClose} />
           <button>Login</button>
         </div>

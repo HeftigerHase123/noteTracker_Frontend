@@ -14,6 +14,7 @@ export default function HeaderComponent() {
         return(
         <header className={styles.header}>
             <Navigation/>
+            <h3>Note Tracker</h3>
         </header>
     );
     }
