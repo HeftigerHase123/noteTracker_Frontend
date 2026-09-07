@@ -1,7 +1,32 @@
 .header {
-    background-color: var(--bg-color-header);
-    display: flex;
-    align-items: center;
-    padding: 0.75rem;
-    color: var(--color-white);
+  width: 100%;
+  height: 20rem;
+  display: grid;
+  grid-template-rows: 3fr 1fr;
+}
+
+.up {
+  display: grid;
+  grid-template-columns: 25rem auto;
+  overflow: hidden;
+}
+
+.down {
+  background: linear-gradient(90deg, rgb(0, 157, 255), violet)
+}
+
+.left {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
+
+.left h1 strong {
+  font-weight: bolder;
+}
+
+.left h1 {
+  line-height: 0.9;
+  font-size: 2.5rem;
 }

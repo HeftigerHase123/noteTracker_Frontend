@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import HeaderComponent from "@/components/header/Header";
-import FooterComponent from "@/components/footer/Footer";
-import ToastProvider from "@/components/toastProvider/ToastProvider";
+import HeaderComponent from "@/components/Header/Header";
 
 export const metadata: Metadata = {
   title: "Note Tracker - For Students",
@@ -18,9 +16,7 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <HeaderComponent />
-        <ToastProvider/>
         <main>{children}</main>
-        <FooterComponent />
       </body>
     </html>
   );

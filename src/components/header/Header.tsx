@@ -1,21 +1,34 @@
-"use client"
-import Navigation from "../navigation/Navigation";
+import { LogoutButton } from "hofmannki";
+import NavigationComponent from "../Navigation/Navigation";
 import styles from "./Header.module.css";
-import { usePathname } from "next/navigation";
+import Image from "next/image";
 
 export default function HeaderComponent() {
-
-    const HIDDEN_ROUTES = [""];
-    const pathname = usePathname();
-
-    if (HIDDEN_ROUTES.includes(pathname)) {
-        return null;
-    } else {
-        return(
-        <header className={styles.header}>
-            <Navigation/>
-            <h3>Note Tracker</h3>
-        </header>
-    );
-    }
+  return (
+    <header className={styles.header}>
+      <div className={styles.up}>
+        <div className={styles.left}>
+          <Image
+            src={"/assets/logos/app-icon-light.png"}
+            alt="App Logo"
+            width={150}
+            height={150}
+          ></Image>
+          <h1>
+            <strong>Note</strong>
+            <br />
+            Tracker
+          </h1>
+        </div>
+        <div className={styles.right}>
+          <div>
+            <LogoutButton isDarkMode={false}/>
+          </div>
+        </div>
+      </div>
+      <div className={styles.down}>
+        <NavigationComponent />
+      </div>
+    </header>
+  );
 }

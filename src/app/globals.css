@@ -4,39 +4,3 @@
   box-sizing: none;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
-
-:root {
-  --bg-color-header: rgb(255, 151, 104);
-  --color-header: #000;
-  --bg-color-brightness: rgba(0, 0, 0, 0.5);
-  --color-box-shadow: rgba(0,0,0,0.5);
-  --color-black: #000;
-  --color-white: #fff;
-  --bg-color-main: rgba(255, 152, 104, 0.5);
-  --color-green: rgb(6, 189, 6);
-  --color-orange: rgb(255, 140, 33);
-  --color-red: rgb(255, 65, 40);
-  --color-primary: rgb(255,151,104);
-}
-
-main {
-  min-height: calc(100vh - 4rem);
-}
-
-.green {
-  background-color: var(--color-green);
-}
-
-.orange {
-  background-color: var(--color-orange);
-}
-
-.red {
-  background-color: var(--color-red);
-}
-
-.primary-btn {
-  background-color: var(--color-black);
-  color: var(--color-white);
-  border: none;
-}

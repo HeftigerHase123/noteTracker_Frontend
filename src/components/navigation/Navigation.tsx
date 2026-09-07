@@ -1,32 +1,51 @@
-"use client";
-import { useEffect, useState } from "react";
-import BurgerButton from "./BurgerButton";
-import Overlay from "./Overlay";
-import Sidebar from "./Sidebar";
+import styles from "./Navigation.module.css";
+import Link from "next/link";
 
-export default function Navigation() {
-  const [isOpen, setIsOpen] = useState(false);
-
-  useEffect(() => {
-    document.body.style.overflow = isOpen ? "hidden" : "";
-    return () => {
-      document.body.style.overflow = "";
-    };
-  }, [isOpen]);
-
-  useEffect(() => {
-    function handleKey(e: KeyboardEvent) {
-      if (e.key === "Escape") setIsOpen(false);
+export const navigationLinks = [
+    {
+        name: "Home",
+        path: "/home"
+    },
+    {
+        name: "Übersicht",
+        path: "/overview",
+        children: [
+            {
+                name: "Stundenplan",
+                path: "/timetable"
+            },
+            {
+                name: "Noten",
+                path: "/grades"
+            }
+        ]
+    },
+    {
+        name: "Einstellungen",
+        path: "/#"
     }
-    document.addEventListener("keydown", handleKey);
-    return () => document.removeEventListener("keydown", handleKey);
-  }, []);
+];
 
-  return (
-    <>
-      <BurgerButton isOpen={isOpen} onClick={() => setIsOpen(true)} />
-      <Overlay isOpen={isOpen} onClick={() => setIsOpen(false)} />
-      <Sidebar isOpen={isOpen} onClose={() => setIsOpen(false)} />
-    </>
-  );
+export default function NavigationComponent() {
+    return (
+        <nav className={styles.nav}>
+            <ul>
+                {navigationLinks.map((item, i) => (
+                    <li key={i}>
+                        <Link href={item.path}>{item.name}</Link>
+
+                        {item.children && (
+                            <ul>
+                                {item.children.map((child, i) => (
+                                    <li key={i}>
+                                        <Link href={child.path}>{child.name}</Link>
+                                    </li>
+                                ))}
+                            </ul>
+                        )}
+                    </li>
+                ))}
+            </ul>
+        </nav>
+    );
 }
