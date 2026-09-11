@@ -1,0 +1,6 @@
+.badget {
+  padding: 6px 12px;
+  border-radius: 8px;
+  background-color: var(--bg-color);
+  color: var(--font-color);
+}

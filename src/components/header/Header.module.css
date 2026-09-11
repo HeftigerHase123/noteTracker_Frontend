@@ -1,32 +1,18 @@
 .header {
-  width: 100%;
-  height: 20rem;
-  display: grid;
-  grid-template-rows: 3fr 1fr;
-}
-
-.up {
-  display: grid;
-  grid-template-columns: 25rem auto;
-  overflow: hidden;
-}
-
-.down {
-  background: linear-gradient(90deg, rgb(0, 157, 255), violet)
+  background-color: #86c3ff;
+  height: 5rem;
+  max-width: 100%;
+  margin: 2rem;
+  border-radius: 2rem;
+  display: flex;
+  justify-content: space-between;
 }
 
 .left {
   display: flex;
-  justify-content: center;
   align-items: center;
-  gap: 2rem;
-}
-
-.left h1 strong {
-  font-weight: bolder;
-}
-
-.left h1 {
-  line-height: 0.9;
-  font-size: 2.5rem;
+  height: 100%;
+  padding: 0rem 2rem;
+  gap: 1rem;
+  color: #fafdf6;
 }

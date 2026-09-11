@@ -11,14 +11,13 @@
 
 .nav a {
     text-decoration: none;
-    color: white;
+    color: var(--porcelain);
     display: block;
     padding: 10px 15px;
 }
 
 .nav > ul {
     display: flex;
-    gap: 5rem;
     margin: 0;
     padding: 0;
 }
@@ -29,11 +28,11 @@
 }
 
 .nav > ul > li {
-    padding: 1rem 5rem;
+    padding: 1rem 3rem;
 }
 
 .nav > ul > li:hover{
-    background-color: rgb(120, 26, 120);
+    background-color: var(--blue-green);
 }
 
 /* Dropdown */
@@ -47,7 +46,7 @@
 
     padding: 1rem 0;
 
-    background-color: rgb(120, 26, 120);
+    background-color: var(--blue-green);
     box-shadow: 0 0 1rem black;
 
     z-index: 9999;
@@ -68,4 +67,9 @@
     opacity: 1;
     visibility: visible;
     transform: translate(-50%, 0);
+}
+
+.nav ul li:last-child {
+    border-top-right-radius: 2rem;
+    border-bottom-right-radius: 2rem;
 }

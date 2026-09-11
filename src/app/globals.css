@@ -4,3 +4,11 @@
   box-sizing: none;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
+
+:root {
+  --yale-blue: #1d546e;
+  --blue-green: #00a0cc;
+  --maya-blue: #86c3ff;
+  --icy-blue: #a8d2f0;
+  --porcelain: #fafdf6;
+}
