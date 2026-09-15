@@ -1,0 +1,77 @@
+.headline {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5rem;
+}
+
+.buttons {
+  display: flex;
+  gap: 2rem;
+}
+
+.table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  border: none;
+  border-radius: 20px;
+  overflow: hidden;
+  table-layout: fixed;
+}
+
+.table th,
+.table td {
+  height: 48px;
+  padding: 10px;
+  text-align: center;
+  border-right: 1px solid black;
+  border-bottom: 1px solid black;
+  font-family: Arial, sans-serif;
+  font-weight: normal;
+}
+
+.table thead th {
+  height: 55px;
+}
+
+.table th:first-child {
+  width: 16%;
+}
+
+.table th:last-child,
+.table td:last-child {
+  border-right: none;
+}
+
+.table tbody tr:last-child th,
+.table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.Monday {
+  background-color: var(--yale-blue);
+}
+
+.Tuesday {
+  background-color: var(--blue-green);
+}
+
+.Wednesday {
+  background-color: var(--cool-sky);
+}
+
+.Thursday {
+  background-color: var(--maya-blue);
+}
+
+.Friday {
+  background-color: var(--icy-blue);
+}
+
+.Monday,
+.Tuesday,
+.Wednesday,
+.Thursday,
+.Friday {
+  color: var(--porcelain);
+}
