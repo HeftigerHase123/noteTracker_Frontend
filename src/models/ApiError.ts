@@ -6,5 +6,5 @@ export interface FieldValidationError {
 export interface ApiError {
     status: number;
     message: string;
-    fieldErrors: FieldValidationError[];
+    fieldErrors?: FieldValidationError[];
 }

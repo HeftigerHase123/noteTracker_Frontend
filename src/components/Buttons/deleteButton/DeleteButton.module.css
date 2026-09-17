@@ -1,0 +1,17 @@
+.button {
+  padding: 0.5rem 1rem;
+  font-size: 1.25rem;
+  border-radius: 0.5rem;
+  font-weight: 900;
+  border: none;
+  background-color: var(--red);
+  color: var(--porcelain);
+  display: flex;
+  gap: 0.5rem;
+  transition: 0.3s ease-out;
+}
+
+.button:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+}

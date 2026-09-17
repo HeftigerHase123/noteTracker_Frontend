@@ -9,7 +9,7 @@ const URL = `${config.apiBaseUrl}/auth`;
 export class AuthService {
 
   static authenticate = async(body: LoginRequest): Promise<JwtDtoResponse> => {
-    const response = await postJSON(`${URL}/login`, body);
+    const response = await postJSON<LoginRequest, JwtDtoResponse>(`${URL}/login`, body);
     
     return response;
   }

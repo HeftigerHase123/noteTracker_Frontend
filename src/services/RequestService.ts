@@ -1,4 +1,4 @@
-import { ApiError } from "next/dist/server/api-utils";
+import { ApiError } from "@/models/ApiError";
 
 export class HttpError extends Error {
     response: Response;
@@ -25,7 +25,7 @@ const handleResponse = async <T>(response: Response): Promise<T> => {
     return response.json() as Promise<T>;
 };
 
-export const getJSON = async(url: string, accessToken?: string) => {
+export const getJSON = async<T>(url: string, accessToken?: string): Promise<T> => {
   const headers = new Headers({
     "content-type": "application/json",
   });
@@ -39,10 +39,10 @@ export const getJSON = async(url: string, accessToken?: string) => {
     headers,
   });
 
-  return handleResponse(response);
+  return handleResponse<T>(response);
 }
 
-export const postJSON = async<T>(url: string, body: T, accessToken?:string) => {
+export const postJSON = async<TRequest, TResponse>(url: string, body: TRequest, accessToken?:string): Promise<TResponse> => {
   const headers = new Headers({
     "content-type": "application/json",
   });
@@ -57,7 +57,7 @@ export const postJSON = async<T>(url: string, body: T, accessToken?:string) => {
     body: JSON.stringify(body),
   });
 
-  return handleResponse(response);
+  return handleResponse<TResponse>(response);
 }
 
 export const putJSON = async<T>(url: string, body: T, accessToken?: string) => {

@@ -15,14 +15,14 @@ export class UserService {
 
   static getAll = async(): Promise<UserDtoResponse[]> => {
     const accessToken = await getToken();
-    const response = await getJSON(URL, accessToken);
+    const response = await getJSON<UserDtoResponse[]>(URL, accessToken);
 
     return response;
   }
 
   static getById = async(id: number): Promise<UserDtoResponse> => {
     const accessToken = await getToken();
-    const response = await getJSON(`${URL}/${id}`, accessToken);
+    const response = await getJSON<UserDtoResponse>(`${URL}/${id}`, accessToken);
 
     return response;
   }

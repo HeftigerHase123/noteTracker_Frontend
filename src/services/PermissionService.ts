@@ -26,14 +26,14 @@ export class PermissionService {
 
   static getAll = async(): Promise<PermissionDto[]> => {
     const accessToken = await getToken();
-    const response = await getJSON(URL, accessToken);
+    const response = await getJSON<PermissionDto[]>(URL, accessToken);
 
     return response;
   }
 
   static getById = async(id: number): Promise<PermissionDto> => {
     const accessToken = await getToken();
-    const response = await getJSON(`${URL}/${id}`, accessToken);
+    const response = await getJSON<PermissionDto>(`${URL}/${id}`, accessToken);
 
     return response;
   }

@@ -1,0 +1,55 @@
+.container {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: fit-content;
+  min-width: 20rem;
+  max-width: 25rem;
+  padding: 1rem 1.5rem;
+  border-radius: 1.25rem;
+  cursor: grab;
+  user-select: none;
+
+  background: linear-gradient(
+    160deg,
+    color-mix(in srgb, var(--bg-color) 100%, white 10%) 0%,
+    var(--bg-color) 100%
+  );
+  border: 1px solid color-mix(in srgb, var(--bg-color) 65%, black 35%);
+  box-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.12),
+    0 10px 22px -12px color-mix(in srgb, var(--bg-color) 70%, black 30%);
+
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+
+  p {
+    font-size: 1.05rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    line-height: 1.2;
+    color: var(--porcelain);
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
+.container:hover {
+  box-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.12),
+    0 14px 26px -12px color-mix(in srgb, var(--bg-color) 75%, black 25%);
+}
+
+.container:active {
+  cursor: grabbing;
+  transform: scale(0.96);
+  box-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.12),
+    0 4px 10px -6px color-mix(in srgb, var(--bg-color) 70%, black 30%);
+}
+
+.container:focus-visible {
+  outline: 2px solid var(--bg-color);
+  outline-offset: 3px;
+}
