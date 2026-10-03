@@ -4,7 +4,7 @@ import EditButton from "@/components/Buttons/editButton/EditButton";
 import styles from "./page.module.css";
 import ExportButton from "@/components/Buttons/exportButton/ExportButton";
 import EditScheduleModal from "@/components/EditScheduleModal/EditScheduleModal";
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import Image from "next/image";
 import { SubjectDTO } from "@/models/subject/SubjectDTO";
 import { SubjectService } from "@/services/SubjectService";
@@ -53,6 +53,9 @@ export default function ClassSchedulePage() {
   const [user, setUser] = useState<UserDtoResponse>();
   const [session, setSession] = useState<Session>();
   const [tableData, setTableData] = useState<SubjectUserDTO[]>();
+  const [width, setWidth] = useState(0)
+
+  const tdRef = useRef<HTMLTableCellElement>(null);
 
   const fetchData = async () => {
     const jwt = await AuthService.authenticate({
@@ -81,6 +84,17 @@ export default function ClassSchedulePage() {
     };
 
     async();
+
+    if (!tdRef.current) return;
+
+    const observer = new ResizeObserver((entries) => {
+      setWidth(entries[0].contentRect.width);
+    });
+
+    observer.observe(tdRef.current);
+
+    return () => observer.disconnect();
+
   }, []);
 
   const getStartTime = (timeSlot: string): string => {
@@ -170,9 +184,9 @@ export default function ClassSchedulePage() {
                   <td key={`${day}-${time}`}></td>
                 )
                 return (
-                    <td key={`${day}-${time}`}>
+                    <td key={`${day}-${time}`} ref={tdRef}>
                         {entry && (
-                            <SubjectContainer draggable={false} subject={subject} />
+                            <SubjectContainer maxWidth={width} draggable={false} subject={subject} />
                         )}
                     </td>
                 );
@@ -215,7 +229,7 @@ export default function ClassSchedulePage() {
             </div>
             <div className={styles.subjectList}>
               {subjects.map((subject, i) => (
-                <SubjectContainer key={i} subject={subject} />
+                <SubjectContainer maxWidth={320} key={i} subject={subject} />
               ))}
               {subjects.length === 0 && <p> Subjects konnten nicht geladen werden. </p>}
             </div>
@@ -243,7 +257,7 @@ export default function ClassSchedulePage() {
 
                       return (
                         <div className={styles.dropCellContent}>
-                          <SubjectContainer subject={subject} />
+                          <SubjectContainer maxWidth={300} subject={subject} />
                           <DeleteButton
                             onClick={() => handleDeleteDrop(time)}
                           />
