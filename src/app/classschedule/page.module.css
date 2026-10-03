@@ -1,3 +1,7 @@
+.page {
+  margin: 2rem;
+}
+
 .headline {
   display: flex;
   justify-content: space-between;

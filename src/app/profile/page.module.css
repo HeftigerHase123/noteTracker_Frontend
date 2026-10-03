@@ -1,0 +1,126 @@
+.page {
+  display: grid;
+  grid-template-rows: 20% auto;
+  height: 100vh;
+}
+
+.top {
+  background-color: var(--maya-blue);
+
+  img {
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    border: 1px solid var(--porcelain);
+  }
+
+  h1 {
+    position: absolute;
+    top: calc(20% + 60px + 1rem);
+    justify-self: center;
+  }
+}
+
+.img_container {
+  background-color: rgba(0, 0, 0, 0.1);
+  display: inline-flex;
+  border-radius: 50%;
+  padding: 0.25rem;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  z-index: 100;
+  top: calc(20% - 60px);
+  left: calc(50% - 60px);
+}
+
+.down {
+  background-color: var(--porcelain);
+  margin-top: calc(60px + 1rem + 1.5rem + 3rem);
+  padding: 0 2rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  grid-template-rows: repeat(var(--repeat-rows), 1fr);
+  gap: 0.75rem;
+  margin-bottom: 5rem;
+}
+
+.grid_entry {
+  display: flex;
+  justify-content: space-between;
+}
+
+.setting_container {
+  padding: 0.5rem 0;
+  text-decoration: none;
+}
+
+.logout {
+  margin-top: 0.5rem;
+}
+
+.theme_left {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.theme_toggle {
+  margin-bottom: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.setting_container,
+.logout {
+  display: flex;
+  align-items: center;
+
+  img {
+    margin-right: 1rem;
+  }
+}
+
+.settings {
+
+  hr {
+    color: var(--text-secoundary);
+  }
+}
+
+.themeInput {
+    display: none;
+}
+
+.themeSwitch {
+    width: 50px;
+    height: 26px;
+    border-radius: 20px;
+    background: #ccc;
+    display: block;
+    cursor: pointer;
+    position: relative;
+}
+
+.themeSwitch span {
+    width: 20px;
+    height: 20px;
+    background: var(--porcelain);
+    border-radius: 50%;
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    transition: 0.2s;
+}
+
+.themeInput:checked + .themeSwitch {
+    background: var(--maya-blue);
+}
+
+.themeInput:checked + .themeSwitch span {
+    left: 27px;
+}

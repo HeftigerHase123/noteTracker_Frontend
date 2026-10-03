@@ -14,8 +14,20 @@
   --porcelain: #fafdf6;
   --black: #212121;
   --red: #bc0101;
+  --link-active: #ffa600;
+
+  --text-color: #212121;
+  --text-color-secondary: #999999;
 }
 
 body {
-  margin: 2rem;
+  margin: 0;
+}
+
+.primary-text {
+  color: var(--text-color);
+}
+
+.secondary-text {
+  color: var(--text-color-secondary);
 }
