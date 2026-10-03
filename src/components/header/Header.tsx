@@ -8,7 +8,14 @@ import Image from "next/image";
 export default function HeaderComponent() {
   const pathname = usePathname();
 
-  const hideHeader = pathname.startsWith("/auth/");
+      const hideHeaderPaths = [
+        "/auth/",
+        "/profile",
+    ];
+
+    const hideHeader = hideHeaderPaths.some((path) =>
+        pathname.startsWith(path)
+    );
 
   if (hideHeader) return;
   return (
