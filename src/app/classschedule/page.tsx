@@ -25,11 +25,11 @@ import { SubjectUserService } from "@/services/SubjectUserService";
 const days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
 
 const weekdayMapping: Record<string, Weekday> = {
-    Monday: Weekday.MO,
-    Tuesday: Weekday.TU,
-    Wednesday: Weekday.WE,
-    Thursday: Weekday.TH,
-    Friday: Weekday.FR,
+  Monday: Weekday.MO,
+  Tuesday: Weekday.TU,
+  Wednesday: Weekday.WE,
+  Thursday: Weekday.TH,
+  Friday: Weekday.FR,
 };
 
 const timeSlots = [
@@ -45,6 +45,33 @@ const timeSlots = [
   "16:15 - 17:00",
 ];
 
+const getStartTime = (timeSlot: string): string => {
+  return `${timeSlot.split(" - ")[0]}:00`;
+};
+
+const createTimeTable = (
+  data: SubjectUserDTO[],
+  weekdayIndex: number,
+): Record<string, number> => {
+  const currentDay = weekdayMapping[days[weekdayIndex]];
+
+  const newTimeTable: Record<string, number> = {};
+
+  data
+    .filter((entry) => entry.weekday === currentDay)
+    .forEach((entry) => {
+      const timeSlot = timeSlots.find(
+        (time) => getStartTime(time) === entry.time,
+      );
+
+      if (timeSlot) {
+        newTimeTable[timeSlot] = entry.subjectId;
+      }
+    });
+
+  return newTimeTable;
+};
+
 export default function ClassSchedulePage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [subjects, setSubjects] = useState<SubjectDTO[]>([]);
@@ -53,7 +80,7 @@ export default function ClassSchedulePage() {
   const [user, setUser] = useState<UserDtoResponse>();
   const [session, setSession] = useState<Session>();
   const [tableData, setTableData] = useState<SubjectUserDTO[]>();
-  const [width, setWidth] = useState(0)
+  const [width, setWidth] = useState(0);
 
   const tdRef = useRef<HTMLTableCellElement>(null);
 
@@ -75,6 +102,8 @@ export default function ClassSchedulePage() {
 
     const tableData = await SubjectUserService.getByUserId(user.id);
     setTableData(tableData);
+    setTimeTable(createTimeTable(tableData, 0));
+
     console.log(tableData);
   };
 
@@ -94,12 +123,7 @@ export default function ClassSchedulePage() {
     observer.observe(tdRef.current);
 
     return () => observer.disconnect();
-
   }, []);
-
-  const getStartTime = (timeSlot: string): string => {
-    return `${timeSlot.split(" - ")[0]}:00`;
-};
 
   const handleDrop = (e: React.DragEvent<HTMLDivElement>, time: string) => {
     e.preventDefault();
@@ -121,18 +145,27 @@ export default function ClassSchedulePage() {
 
   const saveChanges = () => {
     console.log("SAVE CHANGES");
-  }
+  };
 
   const changeIndexCount = (value: number) => {
-    const maxRange = days.length -1;
-    if(countWeekdayIndex === 0 && value === -1) {
-      setCountWeekdayIndex(maxRange)
-    } else if(countWeekdayIndex === maxRange && value === 1) {
-      setCountWeekdayIndex(0)
+    const maxRange = days.length - 1;
+
+    let newIndex: number;
+
+    if (countWeekdayIndex === 0 && value === -1) {
+        newIndex = maxRange;
+    } else if (countWeekdayIndex === maxRange && value === 1) {
+        newIndex = 0;
     } else {
-      setCountWeekdayIndex(countWeekdayIndex + value);
+        newIndex = countWeekdayIndex + value;
     }
-  }
+
+    setCountWeekdayIndex(newIndex);
+
+    if (tableData) {
+        setTimeTable(createTimeTable(tableData, newIndex));
+    }
+};
 
   return (
     <div className={styles.page}>
@@ -142,7 +175,7 @@ export default function ClassSchedulePage() {
         </div>
         <div className={styles.buttons}>
           <EditButton onClick={() => setIsModalOpen(true)} />
-          <ExportButton />
+          {/*<ExportButton />*/}
         </div>
       </div>
 
@@ -162,37 +195,37 @@ export default function ClassSchedulePage() {
 
           <tbody>
             {timeSlots.map((time) => (
-        <tr key={time}>
-            <th>{time}</th>
+              <tr key={time}>
+                <th>{time}</th>
 
-            {days.map((day) => {
-                const weekday = weekdayMapping[day];
-                const dbTime = getStartTime(time);
+                {days.map((day) => {
+                  const weekday = weekdayMapping[day];
+                  const dbTime = getStartTime(time);
 
-                const entry = tableData?.find(
+                  const entry = tableData?.find(
                     (entry) =>
-                        entry.weekday === weekday &&
-                        entry.time === dbTime
-                );
+                      entry.weekday === weekday && entry.time === dbTime,
+                  );
 
-                const subject = subjects.find(
-                  (subject) =>
-                    subject.id === entry?.subjectId
-                );
+                  const subject = subjects.find(
+                    (subject) => subject.id === entry?.subjectId,
+                  );
 
-                if(!subject) return(
-                  <td key={`${day}-${time}`}></td>
-                )
-                return (
+                  if (!subject) return <td key={`${day}-${time}`}></td>;
+                  return (
                     <td key={`${day}-${time}`} ref={tdRef}>
-                        {entry && (
-                            <SubjectContainer maxWidth={width} draggable={false} subject={subject} />
-                        )}
+                      {entry && (
+                        <SubjectContainer
+                          maxWidth={width}
+                          draggable={false}
+                          subject={subject}
+                        />
+                      )}
                     </td>
-                );
-            })}
-        </tr>
-    ))}
+                  );
+                })}
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>
@@ -201,7 +234,10 @@ export default function ClassSchedulePage() {
         onClose={() => setIsModalOpen(false)}
       >
         <div className={styles.modalTop}>
-          <button className={styles.arrowButton} onClick={() => changeIndexCount(-1)}>
+          <button
+            className={styles.arrowButton}
+            onClick={() => changeIndexCount(-1)}
+          >
             <Image
               src={"/assets/icons/arrow-left-blue.png"}
               alt="arrow left"
@@ -212,7 +248,10 @@ export default function ClassSchedulePage() {
           <div className={styles.weekdayContainer}>
             <p>{days[countWeekdayIndex]}</p>
           </div>
-          <button className={styles.arrowButton} onClick={() => changeIndexCount(1)}>
+          <button
+            className={styles.arrowButton}
+            onClick={() => changeIndexCount(1)}
+          >
             <Image
               src={"/assets/icons/arrow-left-blue.png"}
               alt="arrow left"
@@ -231,7 +270,9 @@ export default function ClassSchedulePage() {
               {subjects.map((subject, i) => (
                 <SubjectContainer maxWidth={320} key={i} subject={subject} />
               ))}
-              {subjects.length === 0 && <p> Subjects konnten nicht geladen werden. </p>}
+              {subjects.length === 0 && (
+                <p> Subjects konnten nicht geladen werden. </p>
+              )}
             </div>
           </div>
           <div className={styles.modalBottomMiddle}>
