@@ -5,16 +5,17 @@ import Image from "next/image";
 export default function LoginPage() {
   return (
     <div className={styles.page}>
-      <div className={styles.header}>
-        <Image
-          src={"/assets/logos/app-icon-light.png"}
-          alt="App Logo"
-          width={40}
-          height={40}
-        ></Image>
-        <h2>NoteTracker.ch</h2>
+      <div className={styles.login}>
+        <LoginForm />
       </div>
-      <LoginForm />
+      <div className={styles.image}>
+        <Image
+          src={"/assets/images/login_cover.png"}
+          alt="Login Images"
+          width={300}
+          height={300}
+        ></Image>
+      </div>
     </div>
   );
 }

@@ -1,60 +1,30 @@
 "use client";
-
-import { useActionState, useState } from "react";
 import styles from "./LoginForm.module.css";
-import { ApiError } from "@/models/ApiError";
 import Link from "next/link";
-import { login } from "@/actions/authAction";
-
-const initialState: ApiError = {
-  status: 0,
-  message: "",
-  fieldErrors: [],
-};
 
 export default function LoginForm() {
-  const [state, formAction, isPending] = useActionState(
-    login,
-    initialState,
-  );
-
   return (
-    <form action={formAction} className={styles.form}>
-      <div>
-        <h2>Login</h2>
+    <form className={styles.form} action="#">
+      <div className={styles.headerContainer}>
+        <h1 className={styles.header}>Hello Again!</h1>
       </div>
-
-      <div className={styles.input_container}>
-        <label htmlFor="username">Username</label>
-        <input type="text" name="username" />
-        {state?.fieldErrors
-          ?.filter((error) => error.field === "username")
-          .map((error) => (
-            <p key={error.field}>{error.error}</p>
-          ))}
+      <div className={styles.inputs}>
+        <input type="text" placeholder="Username" />
+        <input type="password" placeholder="Password" />
       </div>
-
-      <div className={styles.input_container}>
-        <label htmlFor="password">Password</label>
-        <input type="password" name="password" />
-        {state?.fieldErrors
-          ?.filter((error) => error.field === "password")
-          .map((error) => (
-            <p key={error.field}>{error.error}</p>
-          ))}
+      <div className={styles.container}>
+        <div className={styles.remember}>
+          <label htmlFor="rememberMe">Remember me</label>
+          <input type="checkbox" name="rememberMe" id="rememberMe" />
+        </div>
+        <div className={styles.forgot}>
+          <p>Forgot password?</p>
+        </div>
       </div>
-
-      <div>
-        <button type="submit" disabled={isPending}>
-          Login
-        </button>
-      </div>
-
-      <div>
-        <p>
-          Create an account <Link href={"/auth/register"}>register</Link>
-        </p>
-      </div>
+      <button type="submit">Login</button>
+      <p className={styles.registerLink}>
+        create an account <Link href={"/auth/register"}>register</Link>
+      </p>
     </form>
   );
 }

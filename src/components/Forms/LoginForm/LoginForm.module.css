@@ -1,53 +1,92 @@
 .form {
-  background-color: var(--porcelain);
-  padding: 3rem;
-  border-radius: 8px;
-  box-shadow: 0 0 1rem #0000001a;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
 }
 
-.input_container {
+.header {
+  margin-bottom: 4rem;
+  justify-self: center;
+}
+
+.inputs {
   display: flex;
   flex-direction: column;
-  font-size: 0.875rem;
-  font-weight: 900;
+  gap: 1rem;
+}
+
+.inputs input {
+  padding: 12px;
+  border-radius: 0.25rem;
+  outline: none;
+  border: 1px solid #ccc;
+  width: 60vw;
+}
+
+.inputs input::placeholder {
+  color: #ccc;
+}
+
+.container {
+  display: flex;
+  font-size: 0.75rem;
+  justify-content: space-between;
+  margin-top: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+.remember {
+  display: flex;
+  align-items: center;
   gap: 0.5rem;
 }
 
-.form div {
-  margin-bottom: 1.5rem;
-}
-
-.input_container input {
-  width: 20rem;
-  padding: 6px 12px;
-  border-radius: 8px;
-  border: 1px solid black;
-  outline: none;
-}
-
-.form button[type="submit"] {
-  background-color: var(--yale-blue);
-  color: var(--porcelain);
-  border: none;
-  padding: 8px 16px;
-  width: 100%;
-  border-radius: 8px;
-}
-
-.form button:hover {
-  filter: brightness(80%);
-}
-
-.form button:disabled {
-  filter: brightness(80%);
-}
-
-.form p a {
-  color: var(--yale-blue);
-  text-decoration: none;
-}
-
-.form p a:hover {
+.remember,
+.remember label,
+.remember input {
   cursor: pointer;
-  color: orange;
+}
+
+.forgot {
+  cursor: pointer;
+}
+
+.form button[type = submit] {
+  padding: 12px;
+  border-radius: 0.25rem;
+  border: none;
+  background-color: var(--yale-blue);
+  color: white;
+  margin-bottom: 1rem;
+}
+
+.registerLink a {
+  text-decoration: none;
+  color: var(--text-color);
+}
+
+.registerLink {
+  font-size: 0.75rem;
+}
+
+.forgot p:hover,
+.registerLink a:hover {
+  color: var(--link-active);
+}
+
+@media screen and (min-width: 767px) {
+  .inputs input {
+    width: 30vw;
+    max-width: 300px;
+  }
+
+  .form inputs,
+  .form button {
+    font-size: 1.2rem;
+  }
+
+  .container,
+  .registerLink {
+    font-size: 0.95rem;
+  }
 }
