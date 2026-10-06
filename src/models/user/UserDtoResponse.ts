@@ -3,6 +3,6 @@ export interface UserDtoResponse {
   username: string;
   firstname: string;
   lastname: string;
-  phone_number: string;
+  phoneNumber: string;
   mail: string;
 }

@@ -1,29 +1,59 @@
-import { CSSProperties } from "react";
+"use client";
+
+import { CSSProperties, useEffect, useState } from "react";
 import styles from "./page.module.css";
 import Image from "next/image";
 import Link from "next/link";
+import { verifySession } from "@/lib/sessionLogic";
+import { Session } from "@/models/auth/Session";
+import { UserDtoResponse } from "@/models/user/UserDtoResponse";
+import { UserService } from "@/services/UserService";
+import { AuthService } from "@/services/AuthService";
+import { createSession } from "@/lib/sessionLogic";
 
 export default function ProfilePage() {
+  const [session, setSession] = useState<Session>();
+  const [user, setUser] = useState<UserDtoResponse>();
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const jwt = await AuthService.authenticate({
+            username: "kimBoy",
+            password: "123412341234",
+          });
+          await createSession(jwt.accessToken);
+      const session = await verifySession();
+      if (session === null) return;
+      setSession(session);
+
+      const user = await UserService.getById(session.user.id);
+      if (!user) return;
+      setUser(user);
+    };
+
+    fetchData();
+  }, []);
+
   const user_data = [
     {
       key: "Phone",
-      value: "076 596 77 86",
+      value: user?.phoneNumber,
     },
     {
       key: "Mail",
-      value: "kim.hofmann@besonet.ch",
+      value: user?.mail,
     },
   ];
 
   const pages = [
     {
       name: "Profile details",
-      url: "/profile/details/${id}",
+      url: `/profile/details/${user?.id}`,
       icon: "/assets/icons/account-dark.png",
     },
     {
       name: "Settings",
-      url: "/profile/settings/${id}",
+      url: `/profile/settings/${user?.id}`,
       icon: "/assets/icons/settings-dark.png",
     },
   ];
@@ -34,13 +64,13 @@ export default function ProfilePage() {
       <div className={styles.top}>
         <div className={styles.img_container}>
           <Image
-            src={"/assets/images/profile.jpg"}
+            src={"/assets/images/student-placeholder.jpg"} //kann man mit user.url ersetzten
             alt="Profile Image"
             width={110}
             height={110}
           />
         </div>
-        <h1>Kim Hofmann</h1>
+        <h1>{`${user?.firstname} ${user?.lastname}`}</h1>
       </div>
       <div className={styles.down}>
         <div
@@ -88,7 +118,10 @@ export default function ProfilePage() {
           <hr />
           {pages.map((page, i) => (
             <div key={i}>
-              <Link href={page.url} className={`${styles.setting_container} primary-text`}>
+              <Link
+                href={page.url}
+                className={`${styles.setting_container} primary-text`}
+              >
                 <Image
                   src={page.icon}
                   alt={`${page.name} icon`}
