@@ -10,6 +10,20 @@ import { UserDtoResponse } from "@/models/user/UserDtoResponse";
 import { UserService } from "@/services/UserService";
 import { AuthService } from "@/services/AuthService";
 import { createSession } from "@/lib/sessionLogic";
+import { Country } from "@/models/user/CountryEnum";
+
+type CountryDetails = {
+  phone_prefix: string;
+  name: string;
+};
+
+export const countries: Record<Country, CountryDetails> = {
+  [Country.CH]: { phone_prefix: "+41", name: "Switzerland" },
+  [Country.DE]: { phone_prefix: "+49", name: "Germany" },
+  [Country.FR]: { phone_prefix: "+33", name: "France" },
+  [Country.AT]: { phone_prefix: "+43", name: "Austria" },
+  [Country.IT]: { phone_prefix: "+39", name: "Italy" },
+};
 
 export default function ProfilePage() {
   const [session, setSession] = useState<Session>();
@@ -18,10 +32,10 @@ export default function ProfilePage() {
   useEffect(() => {
     const fetchData = async () => {
       const jwt = await AuthService.authenticate({
-            username: "kimBoy",
-            password: "123412341234",
-          });
-          await createSession(jwt.accessToken);
+        username: "kimBoy",
+        password: "123412341234",
+      });
+      await createSession(jwt.accessToken);
       const session = await verifySession();
       if (session === null) return;
       setSession(session);
@@ -34,10 +48,21 @@ export default function ProfilePage() {
     fetchData();
   }, []);
 
+  if (!session) return;
+
+  const formatPhoneNumer = (country?: Country, number?: string) => {
+    if (!country || !number) return "";
+
+    const prefix = countries[country]?.phone_prefix;
+    if (!prefix) return "";
+
+    return `${prefix} ${number}`;
+  };
+
   const user_data = [
     {
       key: "Phone",
-      value: user?.phoneNumber,
+      value: formatPhoneNumer(user?.phoneCountry, user?.phoneNumber),
     },
     {
       key: "Mail",
