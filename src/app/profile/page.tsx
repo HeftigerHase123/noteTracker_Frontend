@@ -11,19 +11,7 @@ import { UserService } from "@/services/UserService";
 import { AuthService } from "@/services/AuthService";
 import { createSession } from "@/lib/sessionLogic";
 import { Country } from "@/models/user/CountryEnum";
-
-type CountryDetails = {
-  phone_prefix: string;
-  name: string;
-};
-
-export const countries: Record<Country, CountryDetails> = {
-  [Country.CH]: { phone_prefix: "+41", name: "Switzerland" },
-  [Country.DE]: { phone_prefix: "+49", name: "Germany" },
-  [Country.FR]: { phone_prefix: "+33", name: "France" },
-  [Country.AT]: { phone_prefix: "+43", name: "Austria" },
-  [Country.IT]: { phone_prefix: "+39", name: "Italy" },
-};
+import { countries } from "@/lib/countries";
 
 export default function ProfilePage() {
   const [session, setSession] = useState<Session>();

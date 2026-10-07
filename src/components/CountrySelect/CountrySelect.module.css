@@ -1,0 +1,71 @@
+.dropdown {
+  position: relative;
+  flex: 0 0 100px;
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  width: 100%;
+  padding: 12px 8px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 0.5rem;
+  background: #fff;
+  cursor: pointer;
+  font: inherit;
+}
+
+.arrow {
+  margin-left: auto;
+  font-size: 0.8rem;
+}
+
+.list {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  min-width: 230px;
+  margin: 0;
+  padding: 4px;
+  list-style: none;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+  z-index: 10;
+}
+
+.list li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px;
+  border-radius: 0.4rem;
+  cursor: pointer;
+}
+
+.button img,
+.list img {
+  width: 20px;
+  height: 20px;
+  flex: 0 0 20px;   /* wichtig in Flex-Containern, sonst wird das Bild gestreckt oder gequetscht */
+  object-fit: contain;
+}
+
+.list li[aria-selected="true"] {
+  font-weight: 600;
+}
+
+.active {
+  background: #f2f2f2;
+}
+
+.name {
+  flex: 1;
+}
+
+.prefix {
+  color: #666;
+}

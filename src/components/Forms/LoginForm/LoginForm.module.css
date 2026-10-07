@@ -65,10 +65,6 @@
   color: var(--text-color);
 }
 
-.registerLink {
-  font-size: 0.75rem;
-}
-
 .forgot p:hover,
 .registerLink a:hover {
   color: var(--link-active);
