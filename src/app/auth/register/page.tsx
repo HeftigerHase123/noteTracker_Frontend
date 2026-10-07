@@ -5,9 +5,6 @@ import RegisterForm from "@/components/Forms/RegisterForm/RegisterForm";
 export default function RegisterPage() {
   return (
     <div className={styles.page}>
-      <div className={styles.register}>
-        <RegisterForm />
-      </div>
       <div className={styles.image}>
         <Image
           src={"/assets/images/register_cover.png"}
@@ -15,6 +12,9 @@ export default function RegisterPage() {
           width={300}
           height={300}
         ></Image>
+      </div>
+      <div className={styles.register}>
+        <RegisterForm />
       </div>
     </div>
   );

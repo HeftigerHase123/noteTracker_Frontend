@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import HeaderComponent from "@/components/Header/Header";
+import { Toaster } from "sonner";
 
 export const metadata: Metadata = {
   title: "Note Tracker - For Students",
@@ -13,11 +14,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body>
-        <HeaderComponent />
-        <main>{children}</main>
-      </body>
-    </html>
-  );
+  <html lang="en">
+    <body>
+      <HeaderComponent />
+      <main>{children}</main>
+      <Toaster position="top-right" richColors />
+    </body>
+  </html>
+);
 }

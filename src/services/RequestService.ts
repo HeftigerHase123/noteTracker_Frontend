@@ -1,28 +1,33 @@
 import { ApiError } from "@/models/ApiError";
 
 export class HttpError extends Error {
-    response: Response;
-    apiError: ApiError;
+  response: Response;
+  apiError: ApiError;
 
-    constructor(
-        message: string,
-        response: Response,
-        apiError: ApiError
-    ) {
-        super(message);
-        this.name = "HttpError";
-        this.response = response;
-        this.apiError = apiError;
-    }
+  constructor(
+    message: string,
+    response: Response,
+    apiError: ApiError
+  ) {
+    super(message);
+    this.name = "HttpError";
+    this.response = response;
+    this.apiError = apiError;
+  }
 }
 
 const handleResponse = async <T>(response: Response): Promise<T> => {
-    if (!response.ok) {
-        const error: ApiError= await response.json();
-        throw new HttpError(error.message, response, error);
+  if (!response.ok) {
+    let error: ApiError;
+    try {
+      error = await response.json();
+    } catch {
+      error = { status: response.status, message: response.statusText };
     }
+    throw new HttpError(error.message, response, error);
+  }
 
-    return response.json() as Promise<T>;
+  return response.json() as Promise<T>;
 };
 
 export const getJSON = async<T>(url: string, accessToken?: string): Promise<T> => {
@@ -31,7 +36,7 @@ export const getJSON = async<T>(url: string, accessToken?: string): Promise<T> =
   });
 
   if (accessToken) {
-    headers.set("Authorization", accessToken);
+    headers.set("Authorization", `Bearer ${accessToken}`);
   }
 
   const response = await fetch(url, {
@@ -42,13 +47,13 @@ export const getJSON = async<T>(url: string, accessToken?: string): Promise<T> =
   return handleResponse<T>(response);
 }
 
-export const postJSON = async<TRequest, TResponse>(url: string, body: TRequest, accessToken?:string): Promise<TResponse> => {
+export const postJSON = async<TRequest, TResponse>(url: string, body: TRequest, accessToken?: string): Promise<TResponse> => {
   const headers = new Headers({
     "content-type": "application/json",
   });
 
   if (accessToken) {
-    headers.set("Authorization", accessToken);
+    headers.set("Authorization", `Bearer ${accessToken}`);
   }
 
   const response = await fetch(url, {
@@ -66,7 +71,7 @@ export const putJSON = async<T>(url: string, body: T, accessToken?: string) => {
   });
 
   if (accessToken) {
-    headers.set("Authorization", accessToken);
+    headers.set("Authorization", `Bearer ${accessToken}`);
   }
 
   const response = await fetch(url, {
@@ -78,19 +83,19 @@ export const putJSON = async<T>(url: string, body: T, accessToken?: string) => {
   return handleResponse(response);
 }
 
-export const deleteJSON = async(url: string, accessToken?: string) => {
+export const deleteJSON = async (url: string, accessToken?: string) => {
   const headers = new Headers({
-        "content-type": "application/json",
-    });
+    "content-type": "application/json",
+  });
 
-    if (accessToken) {
-        headers.set("Authorization", accessToken);
-    }
+  if (accessToken) {
+    headers.set("Authorization", `Bearer ${accessToken}`);
+  }
 
-    const response = await fetch(url, {
-        method: "DELETE",
-        headers,
-    });
+  const response = await fetch(url, {
+    method: "DELETE",
+    headers,
+  });
 
-    return handleResponse(response);
+  return handleResponse(response);
 }
