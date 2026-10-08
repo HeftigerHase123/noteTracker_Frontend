@@ -38,6 +38,14 @@ export const navigationLinks: NavigationLink[] = [
 
 export const landingLinks: NavigationLink[] = [
   {
+    name: "Home",
+    path: "/",
+  },
+  {
+    name: "Features",
+    path: "/features"
+  },
+  {
     name: "About",
     path: "/about",
   },

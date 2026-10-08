@@ -20,7 +20,7 @@ export default function ProfilePage() {
   useEffect(() => {
     const fetchData = async () => {
       const session = await verifySession();
-      if (session === null) return;
+      if (session === null) redirect("/not-found");
       setSession(session);
 
       const user = await UserService.getById(session.user.id);
