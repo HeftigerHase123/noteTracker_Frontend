@@ -19,11 +19,6 @@ export default function ProfilePage() {
 
   useEffect(() => {
     const fetchData = async () => {
-      const jwt = await AuthService.authenticate({
-        username: "kimBoy",
-        password: "123412341234",
-      });
-      await createSession(jwt.accessToken);
       const session = await verifySession();
       if (session === null) return;
       setSession(session);
