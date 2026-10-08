@@ -7,14 +7,14 @@ import { Country } from "@/models/user/CountryEnum";
 
 type Props = {
   name?: string;
-  defaultValue?: Country;
+  value: Country;
+  onChange: (country: Country) => void;
 };
 
-export default function CountrySelect({ name = "phone_country", defaultValue = Country.CH }: Props) {
+export default function CountrySelect({ name = "phone_country", value, onChange }: Props) {
   const codes = Object.keys(countries) as Country[];
-  const [selected, setSelected] = useState<Country>(defaultValue);
   const [open, setOpen] = useState(false);
-  const [active, setActive] = useState(codes.indexOf(defaultValue));
+  const [active, setActive] = useState(codes.indexOf(value));
   const ref = useRef<HTMLDivElement>(null);
 
   // Klick ausserhalb schliesst die Liste
@@ -27,7 +27,7 @@ export default function CountrySelect({ name = "phone_country", defaultValue = C
   }, []);
 
   const choose = (code: Country) => {
-    setSelected(code);
+    onChange(code);
     setOpen(false);
   };
 
@@ -50,7 +50,7 @@ export default function CountrySelect({ name = "phone_country", defaultValue = C
   return (
     <div className={styles.dropdown} ref={ref} onKeyDown={onKeyDown}>
       {/* liefert phone_country ins FormData */}
-      <input type="hidden" name={name} value={selected} />
+      <input type="hidden" name={name} value={value} />
 
       <button
         type="button"
@@ -60,8 +60,8 @@ export default function CountrySelect({ name = "phone_country", defaultValue = C
         aria-label="Country code"
         onClick={() => setOpen((o) => !o)}
       >
-        <Image src={countryImage(selected)} alt="" width={20} height={20} unoptimized />
-        <span>{countries[selected].phone_prefix}</span>
+        <Image src={countryImage(value)} alt="" width={20} height={20} unoptimized />
+        <span>{countries[value].phone_prefix}</span>
         <span className={styles.arrow} aria-hidden>▾</span>
       </button>
 
@@ -71,7 +71,7 @@ export default function CountrySelect({ name = "phone_country", defaultValue = C
             <li
               key={code}
               role="option"
-              aria-selected={code === selected}
+              aria-selected={code === value}
               className={i === active ? styles.active : undefined}
               onMouseEnter={() => setActive(i)}
               onClick={() => choose(code)}

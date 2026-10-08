@@ -14,7 +14,7 @@ export const createSession = async (jwt: JwtDtoResponse, rememberMe: boolean) =>
   cookieStore.set(`${SESSION_KEY}`, `${jwt.accessToken}`, {
     httpOnly: true,
     secure: true,
-    expires: rememberMe ? new Date(Date.now() + 30 * 24 * 60 * 60 * 1000) : jwt.expiresIn,
+    expires: rememberMe ? new Date(Date.now() + 30 * 24 * 60 * 60 * 1000) : new Date(Date.now() + jwt.expiresIn),
     sameSite: "strict",
     path: "/",
   });

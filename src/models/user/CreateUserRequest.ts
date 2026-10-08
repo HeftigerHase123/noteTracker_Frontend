@@ -1,4 +1,11 @@
+import { Country } from "./CountryEnum";
+
 export interface CreateUserRequest {
-  username: string;
   password: string;
+  username: string;
+  firstname: string;
+  lastname: string;
+  phoneCountry: string; //Country
+  phoneNumber: string;
+  mail: string;
 }

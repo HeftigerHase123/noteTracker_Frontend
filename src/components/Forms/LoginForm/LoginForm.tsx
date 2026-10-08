@@ -37,6 +37,7 @@ export default function LoginForm() {
 
   useEffect(() => {
     if (state.success) toast.success("Login Success");
+    redirect("/home");
   }, [state]);
 
   return (
@@ -95,7 +96,7 @@ export default function LoginForm() {
       </div>
       <button type="submit" disabled={isPending}>
         {isPending && <span className={styles.spinner} aria-hidden="true" />}
-        {isPending ? "Logging in..." : "Login"}
+        {isPending ? "Loading..." : "Login"}
       </button>
       <p className={styles.registerLink}>
         create an account <Link href={"/auth/register"}>register</Link>

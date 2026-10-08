@@ -2,10 +2,12 @@
   display: flex;
   justify-content: center;
   flex-direction: column;
+  align-items: center;
 }
 
-.headerContainer {
+.header {
   margin-bottom: 4rem;
+  justify-self: center;
 }
 
 .inputs {
@@ -14,15 +16,24 @@
   gap: 1rem;
 }
 
-.inputs select,
 .inputs input {
-  border-radius: 0.5rem;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 12px;
+  border-radius: 0.25rem;
   outline: none;
   border: 1px solid #ccc;
-  padding: 12px;
 }
 
-.form button[type = submit] {
+.inputs input::placeholder {
+  color: #ccc;
+}
+
+.form button[type="submit"] {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
   padding: 12px;
   border-radius: 0.25rem;
   border: none;
@@ -30,6 +41,19 @@
   color: white;
   margin-bottom: 1rem;
   margin-top: 2rem;
+  transition: filter 0.2s, opacity 0.2s;
+  width: 60vw;
+}
+
+.form button[type="submit"]:hover:not(:disabled) {
+  filter: brightness(80%);
+  cursor: pointer;
+}
+
+.form button[type="submit"]:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  filter: grayscale(40%);
 }
 
 .loginLink a {
@@ -41,12 +65,94 @@
   color: var(--link-active);
 }
 
+.inputCountainer {
+  display: flex;
+  flex-direction: column;
+  width: 60vw;
+}
+
+.inputs small {
+  color: var(--red);
+}
+
+/* Phone */
 .phoneRow {
   display: flex;
+  flex-direction: row;
   gap: 10px;
+  width: 60vw;
 }
 
 .phoneRow .phoneNumber {
   flex: 1 1 0;
-  min-width: 0; /* verhindert, dass das Feld über den Rand läuft */
+  min-width: 0;
+}
+
+/* Password */
+.passwordWrapper {
+  position: relative;
+  display: flex;
+  width: 100%;
+}
+
+.passwordWrapper input {
+  padding-right: 4.5rem;
+}
+
+.toggleButton {
+  position: absolute;
+  right: 0.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  padding: 0.25rem 0.5rem;
+  font-size: 0.75rem;
+  color: var(--text-color);
+  cursor: pointer;
+}
+
+.toggleButton:hover {
+  color: var(--link-active);
+}
+
+/* Loading */
+.spinner {
+  width: 1rem;
+  height: 1rem;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  border-top-color: white;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media screen and (min-width: 767px) {
+  .inputs > div {
+    width: 30vw;
+    max-width: 300px;
+  }
+
+  /*
+   * Die Phone Row muss ihre gesamte Breite behalten,
+   * damit CountrySelect + Telefonnummer nebeneinander bleiben.
+   */
+  .form button[type = submit],
+  .inputs > .phoneRow {
+    width: 30vw;
+    max-width: 300px;
+  }
+
+  .form button[type = submit] {
+    font-size: 1.2rem;
+  }
+
+  .loginLink {
+    font-size: 0.95rem;
+  }
 }

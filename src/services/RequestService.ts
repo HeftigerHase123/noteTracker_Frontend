@@ -17,17 +17,20 @@ export class HttpError extends Error {
 }
 
 const handleResponse = async <T>(response: Response): Promise<T> => {
+  const raw = await response.text(); // Body nur einmal lesen
+
   if (!response.ok) {
     let error: ApiError;
     try {
-      error = await response.json();
+      error = JSON.parse(raw);
     } catch {
-      error = { status: response.status, message: response.statusText };
+      error = { status: response.status, message: response.statusText || `HTTP ${response.status}` };
     }
-    throw new HttpError(error.message, response, error);
+    throw new HttpError(error.message || `HTTP ${response.status}`, response, error);
   }
 
-  return response.json() as Promise<T>;
+  // Erfolg: Body kann leer sein (201/204 bei void)
+  return (raw ? JSON.parse(raw) : undefined) as T;
 };
 
 export const getJSON = async<T>(url: string, accessToken?: string): Promise<T> => {
@@ -61,6 +64,7 @@ export const postJSON = async<TRequest, TResponse>(url: string, body: TRequest, 
     headers,
     body: JSON.stringify(body),
   });
+  console.log("AFTER FETCH")
 
   return handleResponse<TResponse>(response);
 }
