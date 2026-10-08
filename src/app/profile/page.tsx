@@ -11,6 +11,7 @@ import { UserService } from "@/services/UserService";
 import { AuthService } from "@/services/AuthService";
 import { createSession } from "@/lib/sessionLogic";
 import { Country } from "@/models/user/CountryEnum";
+import { redirect } from "next/navigation";
 
 type CountryDetails = {
   phone_prefix: string;
@@ -31,13 +32,8 @@ export default function ProfilePage() {
 
   useEffect(() => {
     const fetchData = async () => {
-      const jwt = await AuthService.authenticate({
-        username: "kimBoy",
-        password: "123412341234",
-      });
-      await createSession(jwt.accessToken);
       const session = await verifySession();
-      if (session === null) return;
+      if (session === null) redirect("/home");
       setSession(session);
 
       const user = await UserService.getById(session.user.id);
