@@ -36,8 +36,10 @@ export default function LoginForm() {
   }, [])
 
   useEffect(() => {
-    if (state.success) toast.success("Login Success");
-    redirect("/home");
+    if (state.success) {
+      toast.success("Login Success");
+      redirect("/home");
+    }
   }, [state]);
 
   return (

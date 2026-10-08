@@ -4,14 +4,14 @@ import { CSSProperties, useEffect, useState } from "react";
 import styles from "./page.module.css";
 import Image from "next/image";
 import Link from "next/link";
-import { verifySession } from "@/lib/sessionLogic";
+import { deleteSession, verifySession } from "@/lib/sessionLogic";
 import { Session } from "@/models/auth/Session";
 import { UserDtoResponse } from "@/models/user/UserDtoResponse";
 import { UserService } from "@/services/UserService";
-import { AuthService } from "@/services/AuthService";
-import { createSession } from "@/lib/sessionLogic";
 import { Country } from "@/models/user/CountryEnum";
 import { countries } from "@/lib/countries";
+import { redirect } from "next/navigation";
+import { toast } from "sonner";
 
 export default function ProfilePage() {
   const [session, setSession] = useState<Session>();
@@ -66,7 +66,12 @@ export default function ProfilePage() {
     },
   ];
 
-  console.log(user_data.length);
+  const logout = async () => {
+    await deleteSession();
+    toast.success("Logout Success");
+    redirect("/");
+  }
+
   return (
     <div className={styles.page}>
       <div className={styles.top}>
@@ -141,7 +146,7 @@ export default function ProfilePage() {
             </div>
           ))}
           <hr />
-          <div className={styles.logout}>
+          <div className={styles.logout} onClick={() => logout()}>
             <Image
               src={"/assets/icons/logout-dark.png"}
               alt="Logout"

@@ -47,8 +47,10 @@ export default function RegisterForm() {
   }, []);
 
   useEffect(() => {
-    if (state.success) toast.success("Register Success");
-    redirect("/home");
+    if (state.success) {
+      toast.success("Register Success");
+      redirect("/home");
+    }
   }, [state]);
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {

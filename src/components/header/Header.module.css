@@ -1,18 +1,17 @@
 .header {
-  background-color: #86c3ff;
+  background-color: var(--porcelan);
   height: 5rem;
   max-width: 100%;
-  margin: 2rem;
-  border-radius: 2rem;
   display: flex;
   justify-content: space-between;
+  box-shadow: 0 0 1rem black;
+  padding: 0rem 2rem;
 }
 
 .left {
   display: flex;
   align-items: center;
   height: 100%;
-  padding: 0rem 2rem;
   gap: 1rem;
-  color: #fafdf6;
+  color: var(--text-color);
 }

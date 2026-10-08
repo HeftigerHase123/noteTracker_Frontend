@@ -56,7 +56,7 @@ export const verifySession = cache(async (): Promise<Session | null> => {
 
 export const isLoggedIn = async () => {
   const session = await verifySession();
-  return session ? true : false;
+  return session === null ? false : true;
 }
 
 export const deleteSession = async () => {
