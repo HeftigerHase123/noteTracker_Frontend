@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import styles from "./not-found.module.css";
 import { verifySession } from "@/lib/sessionLogic";
+import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "404 Not Found",
@@ -14,8 +15,8 @@ export default async function NotFound() {
   return (
     <div className={styles.page}>
       <style>{`header { display: none !important; }`}</style>
-      <h1 style={{ fontSize: "4rem", margin: 0 }}>404</h1>
-      <p>This page was not found.</p>
+      <Image src={"/assets/images/not-found.png"} alt="Not found Image" height={1920} width={1851}></Image>
+      <h2>This page not found</h2>
       <Link href={homeLink}>Back to Home</Link>
     </div>
   );

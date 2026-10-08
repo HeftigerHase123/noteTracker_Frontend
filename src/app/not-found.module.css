@@ -6,4 +6,17 @@
   justify-content: center;
   gap: 1rem;
   text-align: center;
+
+  img {
+    width: 25rem;
+    height: auto;
+  }
+
+  a {
+    text-decoration: none;
+    background-color: var(--yale-blue);
+    color: var(--porcelain);
+    padding: 1rem 2rem;
+    border-radius: 2rem;
+  }
 }
