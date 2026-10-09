@@ -1,85 +1,81 @@
 .page {
-  padding: 2rem;
-  height: calc(100vh - 8rem);
-  color: var(--color-header);
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  min-height: calc(100vh - 5rem);
+}
+
+.left {
+  padding: 4rem 2rem 0 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  h1 {
+    font-family: var(--font-heading), sans-serif;
+    font-size: 3.5rem;
+    line-height: 1;
+  }
+
+  .register {
+    margin-top: 1rem;
+  }
+
+  a {
+    background-color: var(--yale-blue);
+    padding: 1rem 2rem;
+    color: var(--porcelain);
+    text-decoration: none;
+    border-radius: 1rem;
+  }
+}
+
+.right {
   position: relative;
   overflow: hidden;
+  max-height: 80%;
+  margin-top: 1rem;
 }
 
-.img_container {
-  inset: 0;
-  z-index: -1;
-}
-
-.img_container img {
+.blob {
   position: absolute;
-  left: 0;
+}
+
+.yaleBlue {
+  width: 70%;
+  height: 90%;
+  top: 0%;
+  right: -15%;
+  background: var(--yale-blue);
+  border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+}
+
+/* Hellerer oranger Blob unten rechts */
+.coolSky {
+  width: 45%;
+  height: 60%;
+  bottom: 0;
+  right: -5%;
+  background: var(--cool-sky);
+  border-radius: 50% 50% 40% 60% / 60% 40% 60% 40%;
+}
+
+/* Grosser beiger Blob in der Mitte */
+.icyBlue {
+  width: 80%;
+  height: 90%;
+  top: 8%;
+  left: 5%;
+  background: var(--icy-blue);
+  border-radius: 40% 60% 70% 30% / 50% 40% 60% 50%;
+}
+
+/* Hellgrauer Blob hinten links */
+.gray {
+  width: 65%;
+  height: 85%;
   top: 0;
-  width: auto;
-  height: 22rem;
-  filter: brightness(0.4);
-}
-
-.title,
-.features {
-  margin-bottom: 2rem;
-}
-
-.title,
-.register {
-  color: var(--color-white);
-}
-
-.title {
-  position: relative;
-  z-index: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  gap: 1rem;
-  margin-top: 1rem;
-}
-
-.register {
-  position: relative;
-  z-index: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  margin-bottom: 3rem;
-}
-
-.register button {
-  padding: 1rem 2rem;
-  margin-top: 1rem;
-  border-radius: 2rem;
-  border: none;
-  background-color: var(--bg-color-header);
-  color: var(--color-white);
-}
-
-.features_title {
-  margin-bottom: 1rem;
-}
-
-.features {
-  display: grid;
-  grid-template-rows: 1fr 1fr;
-  gap: 1rem;
-}
-
-.feature div {
-    display: grid;
-    grid-template-columns: 64px auto;
-    gap: 2rem;
-}
-
-.feature h4 {
-  margin-bottom: 1rem;
-}
-
-.feature {
-  margin-bottom: 1.5rem;
+  left: -5%;
+  background: rgb(238, 238, 238);
+  border-radius: 50% 50% 60% 40% / 40% 60% 40% 60%;
+  z-index: 0;
 }
