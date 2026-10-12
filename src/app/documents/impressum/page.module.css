@@ -1,0 +1,234 @@
+/* ==========================================================
+   Impressum – mobile first, blau / grau / weiss
+   Breakpoints: 768px, 1024px
+   ========================================================== */
+
+.page {
+  --blue: var(--yale-blue, #1f5673);
+  --blue-gray-50: #f1f4f8; /* Seitenhintergrund */
+  --blue-gray-100: #e3e9f0; /* Platzhalter, Trennflächen */
+  --blue-gray-300: #c3ceda; /* Linien */
+  --blue-gray-600: #5a6b7c; /* gedämpfter Text */
+  --ink: var(--text-color, #1f2a35);
+  --white: #ffffff;
+
+  min-height: 100%;
+  background-color: var(--blue-gray-50);
+  color: var(--ink);
+}
+
+/* ---------- Header ---------- */
+
+.hero {
+  background-color: var(--blue);
+  color: var(--white);
+  padding: 3rem 1.5rem;
+}
+
+.heroInner {
+  max-width: 64rem;
+  margin: 0 auto;
+}
+
+.hero h1 {
+  margin: 0 0 0.5rem;
+  font-size: 2.25rem;
+  line-height: 1.1;
+}
+
+.hero p {
+  margin: 0;
+  font-size: 1.05rem;
+  color: #d5e0ea;
+}
+
+/* ---------- Layout ---------- */
+
+.layout {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  max-width: 64rem;
+  margin: 0 auto;
+  padding: 1.5rem 1.5rem 4rem;
+}
+
+/* ---------- Inhaltsverzeichnis ---------- */
+
+.toc ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.toc a {
+  display: block;
+  padding: 0.4rem 0.85rem;
+  border-radius: 999px;
+  background-color: var(--blue-gray-100);
+  color: var(--ink);
+  font-size: 0.9rem;
+  text-decoration: none;
+}
+
+.toc a:hover {
+  background-color: var(--blue-gray-300);
+}
+
+.toc a:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: 2px;
+}
+
+/* ---------- Inhalt ---------- */
+
+.content {
+  min-width: 0;
+  padding: 0.5rem 1.5rem;
+  border: 1px solid var(--blue-gray-300);
+  border-radius: 1rem;
+  background-color: var(--white);
+}
+
+.section {
+  padding: 1.75rem 0;
+  scroll-margin-top: 5rem; /* Platz für die Navigation bei Anker-Links */
+}
+
+.section + .section {
+  border-top: 1px solid var(--blue-gray-100);
+}
+
+.section h2 {
+  margin: 0 0 1rem;
+  padding-left: 0.75rem;
+  border-left: 4px solid var(--blue);
+  font-size: 1.25rem;
+  line-height: 1.3;
+  color: var(--blue);
+}
+
+.section p {
+  max-width: 65ch;
+  margin: 0 0 1rem;
+  line-height: 1.65;
+}
+
+.section p:last-child {
+  margin-bottom: 0;
+}
+
+/* Angaben als Liste aus Bezeichnung und Wert */
+.section dl {
+  display: grid;
+  gap: 0.15rem 0;
+  margin: 0;
+}
+
+.section dt {
+  margin-top: 0.75rem;
+  color: var(--blue-gray-600);
+  font-size: 0.9rem;
+}
+
+.section dt:first-child {
+  margin-top: 0;
+}
+
+.section dd {
+  margin: 0;
+  line-height: 1.6;
+}
+
+/* ---------- Platzhalter ---------- */
+
+.placeholder {
+  padding: 0.05rem 0.4rem;
+  border-radius: 0.3rem;
+  background-color: var(--blue-gray-100);
+  color: var(--blue-gray-600);
+}
+
+/* ==========================================================
+   Ab 768px
+   ========================================================== */
+
+@media screen and (min-width: 768px) {
+  .hero {
+    padding: 4rem 2.5rem;
+  }
+
+  .hero h1 {
+    font-size: 3rem;
+  }
+
+  .layout {
+    padding: 2rem 2.5rem 5rem;
+  }
+
+  .content {
+    padding: 1rem 2.5rem;
+  }
+
+  .section dl {
+    grid-template-columns: 10rem 1fr;
+    gap: 0.75rem 1.5rem;
+  }
+
+  .section dt,
+  .section dt:first-child {
+    margin-top: 0;
+    padding-top: 0.1rem;
+  }
+}
+
+/* ==========================================================
+   Ab 1024px: Inhaltsverzeichnis links, mitlaufend
+   ========================================================== */
+
+@media screen and (min-width: 1024px) {
+  .layout {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 2.5rem;
+    padding: 3rem 3rem 6rem;
+  }
+
+  .toc {
+    position: sticky;
+    top: 6rem;
+    flex: 0 0 14rem;
+  }
+
+  .toc ul {
+    flex-direction: column;
+    flex-wrap: nowrap;
+    gap: 0.15rem;
+    border-left: 2px solid var(--blue-gray-300);
+  }
+
+  .toc a {
+    padding: 0.4rem 0.9rem;
+    border-radius: 0 0.5rem 0.5rem 0;
+    background-color: transparent;
+    color: var(--blue-gray-600);
+  }
+
+  .toc a:hover {
+    background-color: var(--blue-gray-100);
+    color: var(--ink);
+  }
+
+  .content {
+    flex: 1 1 auto;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html:has(.page) {
+    scroll-behavior: smooth;
+  }
+}
