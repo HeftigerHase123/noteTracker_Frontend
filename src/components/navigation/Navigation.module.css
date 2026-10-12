@@ -29,37 +29,29 @@
 }
 
 .nav > ul > li {
-  padding: 1rem 1rem;
+  padding: 1rem;
   transition: 0.15s ease-in-out;
 }
 
-/* Dropdown */
+/* Dropdown (Desktop) */
 .nav > ul > li > ul {
   position: absolute;
   top: 100%;
   left: 50%;
-
   width: 100%;
   margin: 0;
-
   padding: 1rem 0;
-
   box-shadow: 0 0 1rem black;
-
   z-index: 9999;
-
   opacity: 0;
   visibility: hidden;
-
   transform: translate(-50%, -10px);
-
   transition:
     opacity 0.25s ease,
     transform 0.25s ease,
     visibility 0.25s ease;
 }
 
-/* Dropdown anzeigen */
 .nav > ul > li:hover > ul {
   opacity: 1;
   visibility: visible;
@@ -73,10 +65,106 @@
 }
 
 .nav .profile {
-    padding: 0;
-    width: 2.5rem;
-    height: 2.5rem;
-    border-radius: 50%;
-    border: 1px solid rgba(0, 0, 0, 0.2);
-    overflow: hidden;
+  padding: 0;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+}
+
+/* Burger-Button: auf Desktop versteckt */
+.burger {
+  display: none;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  color: var(--text-color);
+}
+
+.burger span {
+  display: block;
+  width: 1.6rem;
+  height: 2px;
+  margin: 5px 0;
+  background-color: currentColor;
+  transition:
+    transform 0.25s ease,
+    opacity 0.2s ease;
+}
+
+/* Burger wird zum X, wenn das Menü offen ist */
+.burger[aria-expanded="true"] span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.burger[aria-expanded="true"] span:nth-child(2) {
+  opacity: 0;
+}
+
+.burger[aria-expanded="true"] span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* Mobile Navigation */
+@media screen and (max-width: 767px) {
+  .nav {
+    justify-content: flex-end;
+  }
+
+  .burger {
+    display: block;
+    position: relative;
+    z-index: 10001;
+  }
+
+  /* Menü als Karte unter dem Burger-Button, unabhängig von der Breite von .nav */
+  .nav > ul {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    width: max-content;
+    min-width: 14rem;
+    max-width: 90vw;
+    flex-direction: column;
+    align-items: stretch;
+    padding: 0.5rem;
+    box-sizing: border-box;
+    background-color: var(--porcelain);
+    border-radius: 0 0 1rem 1rem;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.25);
+  }
+
+  .nav > ul.open {
+    display: flex;
+  }
+
+  .nav > ul > li {
+    padding: 0.25rem 0;
+  }
+
+  .nav > ul > li > a {
+    padding: 0.75rem 1rem;
+  }
+
+  .nav .login {
+    text-align: center;
+  }
+
+  .nav .profile {
+    margin: 0.5rem 1rem;
+  }
+
+  /* Unterpunkte: auf Touch-Geräten immer sichtbar (kein Hover) */
+  .nav > ul > li > ul {
+    position: static;
+    width: 100%;
+    padding: 0.25rem 0 0.25rem 1rem;
+    box-shadow: none;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+  }
 }
