@@ -1,0 +1,154 @@
+/* ==========================================================
+   FeatureCard – mobile first
+   Äusserer Radius = innerer Radius + Padding (konzentrische Ecken)
+   ========================================================== */
+
+.card {
+  --padding: 1.25rem;
+  --inner-radius: 12px;
+
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  min-width: 0; /* langer Text sprengt die Karte nicht */
+  height: 100%; /* alle Karten einer Zeile sind gleich hoch */
+  padding: var(--padding);
+  border-radius: calc(var(--inner-radius) + var(--padding));
+  background-color: var(--porcelain);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 0.25rem 1rem rgba(0, 0, 0, 0.08);
+  color: var(--text-color);
+}
+
+/* ---------- Bild: 16:9, von der Mitte zugeschnitten ---------- */
+
+.imageWrapper {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border-radius: var(--inner-radius);
+  background: linear-gradient(135deg, var(--icy-blue, #cfe8f7), var(--cool-sky, #6fa8dc));
+}
+
+.image {
+  object-fit: cover;
+  object-position: center;
+}
+
+/* ---------- Texte: Länge ist unbekannt ---------- */
+
+.title {
+  margin: 0;
+  font-size: 1.25rem;
+  line-height: 1.25;
+  overflow-wrap: anywhere;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2; /* maximal 2 Zeilen */
+  line-clamp: 2;
+  overflow: hidden;
+}
+
+.description {
+  flex: 1; /* schiebt den Link nach unten, auch bei kurzem Text */
+  margin: 0;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4; /* maximal 4 Zeilen */
+  line-clamp: 4;
+  overflow: hidden;
+}
+
+/* ---------- Link ---------- */
+
+.link {
+  align-self: flex-start;
+  font-weight: 600;
+  color: var(--yale-blue);
+  text-decoration: none;
+}
+
+.link::after {
+  content: " →";
+  display: inline-block;
+  transition: transform 0.15s ease;
+}
+
+.link:hover {
+  text-decoration: underline;
+}
+
+.link:hover::after {
+  transform: translateX(0.2rem);
+}
+
+.link:focus-visible {
+  outline: 2px solid var(--yale-blue);
+  outline-offset: 3px;
+  border-radius: 0.25rem;
+}
+
+/* ---------- Ladezustand ---------- */
+
+.skeleton .imageWrapper,
+.skeletonTitle,
+.skeletonLine {
+  background: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 0.06) 25%,
+    rgba(0, 0, 0, 0.12) 50%,
+    rgba(0, 0, 0, 0.06) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.4s linear infinite;
+}
+
+.skeletonTitle {
+  width: 60%;
+  height: 1.25rem;
+  border-radius: 0.375rem;
+}
+
+.skeletonLine {
+  width: 100%;
+  height: 1rem;
+  border-radius: 0.375rem;
+}
+
+.skeletonLine:last-child {
+  width: 80%;
+}
+
+@keyframes shimmer {
+  to {
+    background-position: -200% 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skeleton .imageWrapper,
+  .skeletonTitle,
+  .skeletonLine,
+  .link::after {
+    animation: none;
+    transition: none;
+  }
+}
+
+/* ==========================================================
+   Ab 768px
+   ========================================================== */
+
+@media screen and (min-width: 768px) {
+  .card {
+    --padding: 2rem; /* Radius: 12px + 2rem = 44px */
+    gap: 1.25rem;
+  }
+
+  .title {
+    font-size: 1.4rem;
+  }
+}

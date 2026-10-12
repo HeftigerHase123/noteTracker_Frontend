@@ -1,91 +1,245 @@
-.page section {
-  height: calc(100vh);
-}
+/* ==========================================================
+   Landing Page – mobile first
+   Breakpoints: 768px (Tablet), 1024px (Desktop)
+   ========================================================== */
 
-:global(html) {
-  scroll-behavior: smooth;
-  scroll-padding-top: 5rem;
-}
+.page {
+  --section-padding: 3rem 1.5rem;
+  --max-width: 72rem;
+  --gap: 1.5rem;
 
-.home {
-  display: grid;
-}
-
-.left > div {
-  padding: 4rem 2rem 0 2rem;
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  width: 100%;
+  color: var(--text-color);
+}
+
+/* Gemeinsame Abschnitte */
+.home,
+.features,
+.about {
+  padding: var(--section-padding);
+  scroll-margin-top: 5rem; /* Platz für die Navigation bei Anker-Links */
+}
+
+.features > div,
+.about > div {
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+/* Überschrift + Beschreibung (in allen Abschnitten verwendet) */
+.header h1 {
+  margin: 0 0 1rem;
+  font-size: 2rem;
+  line-height: 1.15;
+}
+
+.description p {
+  margin: 0 0 1.5rem;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.head {
+  margin-bottom: 2rem;
+}
+
+/* ==========================================================
+   Home
+   ========================================================== */
+
+.home {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
 }
 
 .left {
-  h1 {
-    font-family: var(--font-heading), sans-serif;
-    font-size: 2.5rem; /*3.5*/
-    line-height: 1;
-  }
-
-  .register {
-    margin-top: 1rem;
-  }
-
-  a {
-    background-color: var(--yale-blue);
-    padding: 1rem 2rem;
-    color: var(--porcelain);
-    text-decoration: none;
-    border-radius: 1rem;
-  }
+  display: flex;
+  align-items: center;
 }
 
+.register a {
+  display: inline-block;
+  padding: 0.85rem 1.75rem;
+  border-radius: 1rem;
+  background-color: var(--yale-blue);
+  color: var(--porcelain);
+  font-weight: 600;
+  text-decoration: none;
+  transition:
+    transform 0.15s ease,
+    opacity 0.15s ease;
+}
+
+.register a:hover {
+  transform: translateY(-2px);
+  opacity: 0.92;
+}
+
+/* Dekorative Blobs */
 .right {
-  visibility: hidden;
   position: relative;
-  overflow: hidden;
-  max-height: 80%;
-  margin-top: 1rem;
+  min-height: 16rem;
 }
 
 .blob {
   position: absolute;
+  border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+  animation: float 8s ease-in-out infinite;
 }
 
 .yaleBlue {
-  width: 70%;
-  height: 90%;
-  top: 0%;
-  right: -15%;
-  background: var(--yale-blue);
-  border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+  top: 5%;
+  left: 10%;
+  width: 55%;
+  height: 65%;
+  background-color: var(--yale-blue);
 }
 
-/* Hellerer oranger Blob unten rechts */
 .coolSky {
+  top: 30%;
+  right: 5%;
   width: 45%;
-  height: 60%;
-  bottom: 0;
-  right: -5%;
-  background: var(--cool-sky);
-  border-radius: 50% 50% 40% 60% / 60% 40% 60% 40%;
+  height: 55%;
+  background-color: var(--cool-sky, #6fa8dc);
+  animation-delay: -2s;
 }
 
-/* Grosser beiger Blob in der Mitte */
 .icyBlue {
-  width: 80%;
-  height: 90%;
-  top: 8%;
-  left: 5%;
-  background: var(--icy-blue);
-  border-radius: 40% 60% 70% 30% / 50% 40% 60% 50%;
+  bottom: 5%;
+  left: 20%;
+  width: 40%;
+  height: 40%;
+  background-color: var(--icy-blue, #cfe8f7);
+  animation-delay: -4s;
 }
 
-/* Hellgrauer Blob hinten links */
 .gray {
-  width: 65%;
-  height: 85%;
   top: 0;
-  left: -5%;
-  background: rgb(238, 238, 238);
-  border-radius: 50% 50% 60% 40% / 40% 60% 40% 60%;
-  z-index: 0;
+  right: 25%;
+  width: 22%;
+  height: 28%;
+  background-color: var(--gray, #b8bcc2);
+  animation-delay: -6s;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-0.75rem) rotate(4deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .blob {
+    animation: none;
+  }
+}
+
+/* ==========================================================
+   Features
+   ========================================================== */
+
+/* Mobile: 1 Karte pro Zeile */
+.feature_grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--gap);
+}
+
+.feature_grid > * {
+  flex: 0 1 100%;
+}
+
+/* ==========================================================
+   About
+   ========================================================== */
+
+.about ul {
+  display: grid;
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.about li {
+  padding: 1rem 1.25rem;
+  border-left: 4px solid var(--yale-blue);
+  border-radius: 0.25rem 0.75rem 0.75rem 0.25rem;
+  background-color: var(--porcelain);
+  line-height: 1.5;
+}
+
+/* ==========================================================
+   Ab 768px (Tablet)
+   ========================================================== */
+
+@media screen and (min-width: 768px) {
+  .page {
+    --section-padding: 4rem 2.5rem;
+  }
+
+  .header h1 {
+    font-size: 2.75rem;
+  }
+
+  .description p {
+    font-size: 1.1rem;
+  }
+
+  .right {
+    min-height: 22rem;
+  }
+
+  .feature_grid > * {
+    flex-basis: calc((100% - var(--gap)) / 2);
+  }
+}
+
+/* ==========================================================
+   Ab 1024px (Desktop)
+   ========================================================== */
+
+@media screen and (min-width: 1024px) {
+  .page {
+    --section-padding: 5rem 3rem;
+  }
+
+  /* Home: Text links, Blobs rechts */
+  .home {
+    flex-direction: row;
+    align-items: center;
+    gap: 4rem;
+  }
+
+  .left,
+  .right {
+    flex: 1 1 50%;
+  }
+
+  .right {
+    min-height: 28rem;
+  }
+
+  .header h1 {
+    font-size: 3.25rem;
+  }
+
+  .feature_grid > * {
+    flex-basis: calc((100% - 2 * var(--gap)) / 3);
+  }
+
+  .about ul {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
