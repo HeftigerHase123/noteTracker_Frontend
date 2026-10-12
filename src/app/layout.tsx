@@ -3,6 +3,7 @@ import "./globals.css";
 import HeaderComponent from "@/components/Header/Header";
 import { Toaster } from "sonner";
 import { Inter, Space_Grotesk } from "next/font/google";
+import FooterComponent from "@/components/Footer/Footer";
 
 export const metadata: Metadata = {
   title: "Note Tracker - For Students",
@@ -29,6 +30,7 @@ export default function RootLayout({
     <body className={`${inter.variable} ${spaceGrotesk.variable}`}>
       <HeaderComponent />
       <main>{children}</main>
+      <FooterComponent />
       <Toaster position="top-center" richColors />
     </body>
   </html>

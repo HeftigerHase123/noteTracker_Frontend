@@ -10,7 +10,6 @@ export default function HeaderComponent() {
 
       const hideHeaderPaths = [
         "/auth/",
-        "/profile",
     ];
 
     const hideHeader = hideHeaderPaths.some((path) =>
