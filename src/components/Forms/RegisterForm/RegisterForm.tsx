@@ -40,7 +40,7 @@ export default function RegisterForm() {
   useEffect(() => {
     const checkCookie = async () => {
       const check = await isLoggedIn();
-      if (check) redirect("/home");
+      if (check) redirect("/");
     };
 
     checkCookie();
@@ -49,7 +49,7 @@ export default function RegisterForm() {
   useEffect(() => {
     if (state.success) {
       toast.success("Register Success");
-      redirect("/home");
+      redirect("/");
     }
   }, [state]);
 

@@ -18,7 +18,7 @@ export type NavigationLink = {
 };
 
 export const navigationLinks: NavigationLink[] = [
-  { name: "Home", path: "/home" },
+  { name: "Dashboard", path: "/dashboard" },
   { name: "Class Schedule", path: "/classschedule" },
   { name: "Grades", path: "/grades" },
   { name: "Profile", path: "/profile" },

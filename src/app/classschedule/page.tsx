@@ -21,6 +21,7 @@ import { Session } from "@/models/auth/Session";
 import { UserService } from "@/services/UserService";
 import { SubjectUserDTO } from "@/models/subject_user/SubjectUserDTO";
 import { SubjectUserService } from "@/services/SubjectUserService";
+import { redirect } from "next/navigation";
 
 const days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
 
@@ -85,17 +86,12 @@ export default function ClassSchedulePage() {
   const tdRef = useRef<HTMLTableCellElement>(null);
 
   const fetchData = async () => {
-    const jwt = await AuthService.authenticate({
-      username: "admin",
-      password: "wert1234wert1234",
-    });
-    await createSession(jwt.accessToken);
+    const session = await verifySession();
+    if (session === null) redirect("/not-found");
+    setSession(session);
+
     const subjectList = await SubjectService.getAll();
     setSubjects(subjectList);
-
-    const session = await verifySession();
-    if (!session) return;
-    setSession(session);
 
     const user = await UserService.getById(session.user.id);
     setUser(user);
@@ -153,19 +149,19 @@ export default function ClassSchedulePage() {
     let newIndex: number;
 
     if (countWeekdayIndex === 0 && value === -1) {
-        newIndex = maxRange;
+      newIndex = maxRange;
     } else if (countWeekdayIndex === maxRange && value === 1) {
-        newIndex = 0;
+      newIndex = 0;
     } else {
-        newIndex = countWeekdayIndex + value;
+      newIndex = countWeekdayIndex + value;
     }
 
     setCountWeekdayIndex(newIndex);
 
     if (tableData) {
-        setTimeTable(createTimeTable(tableData, newIndex));
+      setTimeTable(createTimeTable(tableData, newIndex));
     }
-};
+  };
 
   return (
     <div className={styles.page}>

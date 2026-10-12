@@ -29,7 +29,7 @@ export default function LoginForm() {
   useEffect(() => {
     const checkCookie = async() => {
       const check = await isLoggedIn();
-      if (check) redirect("/home");
+      if (check) redirect("/");
     };
 
     checkCookie();
@@ -38,7 +38,7 @@ export default function LoginForm() {
   useEffect(() => {
     if (state.success) {
       toast.success("Login Success");
-      redirect("/home");
+      redirect("/");
     }
   }, [state]);
 

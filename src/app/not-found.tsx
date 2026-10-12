@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 
 export default async function NotFound() {
   const token = await verifySession();
-  const homeLink = token ? "/home" : "/";
+  const homeLink = token ? "/dashboard" : "/";
 
   return (
     <div className={styles.page}>

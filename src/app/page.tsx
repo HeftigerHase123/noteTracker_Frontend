@@ -1,8 +1,13 @@
+"use client"
+
 import FeatureCardComponent, {
   FeatureCardProps,
 } from "@/components/cards/FeatureCard/FeatureCard";
 import styles from "./page.module.css";
 import Link from "next/link";
+import { useEffect } from "react";
+import { verifySession } from "@/lib/sessionLogic";
+import { redirect } from "next/navigation";
 
 export const defaultFeatureImagesUrl = "/assets/images/features/";
 export const featureList: FeatureCardProps[] = [
@@ -21,6 +26,14 @@ export const featureList: FeatureCardProps[] = [
 ];
 
 export default function Landing() {
+  useEffect(() => {
+    const fetchDataAsync = async () => {
+      const session = await verifySession();
+      if (session !== null) redirect("/dashboard");
+    };
+
+    fetchDataAsync();
+  }, []);
   return (
     <div className={styles.page}>
       <section id="home" className={styles.home}>
