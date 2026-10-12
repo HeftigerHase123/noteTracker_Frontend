@@ -1,18 +1,27 @@
-.page {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  min-height: calc(100vh - 5rem);
+.page section {
+  height: calc(100vh);
 }
 
-.left {
+:global(html) {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+}
+
+.home {
+  display: grid;
+}
+
+.left > div {
   padding: 4rem 2rem 0 2rem;
   display: flex;
   flex-direction: column;
   gap: 1rem;
+}
 
+.left {
   h1 {
     font-family: var(--font-heading), sans-serif;
-    font-size: 3.5rem;
+    font-size: 2.5rem; /*3.5*/
     line-height: 1;
   }
 
@@ -30,6 +39,7 @@
 }
 
 .right {
+  visibility: hidden;
   position: relative;
   overflow: hidden;
   max-height: 80%;

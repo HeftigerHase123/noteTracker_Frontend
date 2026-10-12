@@ -1,11 +1,14 @@
 .header {
-  background-color: var(--porcelan);
+  background-color: var(--porcelain);
   height: 5rem;
   max-width: 100%;
   display: flex;
   justify-content: space-between;
   box-shadow: 0 0 1rem black;
   padding: 0rem 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
 
 .left {
