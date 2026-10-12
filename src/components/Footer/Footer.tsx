@@ -1,6 +1,9 @@
+"use client"
+
 import Link from "next/link";
 import styles from "./Footer.module.css";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 
 export type FooterLinkProps = {
   name: string;
@@ -23,6 +26,17 @@ export const footerLinkList: FooterLinkProps[] = [
 ];
 
 export default function FooterComponent() {
+  const pathname = usePathname();
+
+      const hideHeaderPaths = [
+        "/auth/",
+    ];
+
+    const hideHeader = hideHeaderPaths.some((path) =>
+        pathname.startsWith(path)
+    );
+
+  if (hideHeader) return;
   return (
     <footer className={styles.footer}>
       <div className={`${styles.header} ${styles.flex}`}>

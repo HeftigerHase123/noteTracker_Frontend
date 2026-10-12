@@ -14,7 +14,7 @@ export default async function NotFound() {
 
   return (
     <div className={styles.page}>
-      <style>{`header { display: none !important; }`}</style>
+      <style>{`header { display: none !important; } footer { display: none !important; }`}</style>
       <Image src={"/assets/images/not-found.png"} alt="Not found Image" height={1920} width={1851}></Image>
       <h2>This page not found</h2>
       <Link href={homeLink}>Back to Home</Link>
