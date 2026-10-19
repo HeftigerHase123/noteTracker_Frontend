@@ -11,12 +11,4 @@
     width: 25rem;
     height: auto;
   }
-
-  a {
-    text-decoration: none;
-    background-color: var(--yale-blue);
-    color: var(--porcelain);
-    padding: 1rem 2rem;
-    border-radius: 2rem;
-  }
 }

@@ -21,7 +21,7 @@ export default function HeaderComponent() {
     <header className={styles.header}>
       <div className={styles.left}>
         <Image
-          src={"/assets/logos/app-icon-light.png"}
+          src={"/assets/logos/app-icon-blue.png"}
           alt="Web Logo"
           width={50}
           height={50}

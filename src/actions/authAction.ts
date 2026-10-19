@@ -3,12 +3,12 @@
 import { LoginState } from "@/components/Forms/LoginForm/LoginForm";
 import { RegisterState } from "@/components/Forms/RegisterForm/RegisterForm";
 import { createSession } from "@/lib/sessionLogic";
-import { ApiError } from "@/models/ApiError"
-import { LoginRequest } from "@/models/auth/LoginRequest"
 import { Country } from "@/models/user/CountryEnum";
 import { CreateUserRequest } from "@/models/user/CreateUserRequest";
+import { Theme } from "@/models/user/ThemeEnum";
 import { AuthService } from "@/services/AuthService";
 import { HttpError } from "@/services/RequestService";
+
 
 export const login = async (state: LoginState, formData: FormData): Promise<LoginState> => {
   const username = (formData.get("username") as string)?.trim();
@@ -97,6 +97,7 @@ export const register = async (state: RegisterState, formData: FormData): Promis
     console.log("SIGNUP SUCCESS")
     const response = await AuthService.authenticate({ username: username, password: password });
     await createSession(response, false);
+    console.log("AFTER CREATE SESSION")
     return { error: null, fieldErrors: {}, success: true };
   } catch (e) {
     if (e instanceof HttpError) {

@@ -6,7 +6,7 @@
 }
 
 .top {
-  background-color: var(--maya-blue);
+  background-color: var(--color-secoundary);
 
   img {
     border-radius: 50%;
@@ -110,7 +110,7 @@
 .themeSwitch span {
     width: 20px;
     height: 20px;
-    background: var(--porcelain);
+    background: var(--color-background);
     border-radius: 50%;
     position: absolute;
     top: 3px;
@@ -119,7 +119,7 @@
 }
 
 .themeInput:checked + .themeSwitch {
-    background: var(--maya-blue);
+    background: var(--color-secoundary);
 }
 
 .themeInput:checked + .themeSwitch span {
@@ -151,13 +151,13 @@
     }
 
     h1 {
-      top: calc(25% + 120px + 1rem);
+      top: calc(25% + 180px + 1rem);
       left: calc(25vh);
     }
   }
 
   .img_container {
-    top: calc(25% - 120px);
+    top: calc(25% - 60px);
     left: calc(25vh);
   }
 

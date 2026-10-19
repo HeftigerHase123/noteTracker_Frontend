@@ -100,7 +100,7 @@ export default function NavigationComponent() {
           <li key={item.path}>
             <Link
               className={[
-                item.name === "Login" ? styles.login : "",
+                item.name === "Login" ? "link-primary" : "",
                 item.name === "Profile" ? styles.profile : "",
               ]
                 .filter(Boolean)

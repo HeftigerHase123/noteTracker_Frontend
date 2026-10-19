@@ -50,7 +50,7 @@ export default function Landing() {
               </p>
             </div>
             <div className={styles.register}>
-              <Link href={"/auth/register"}>Start for free</Link>
+              <Link className="link-primary" href={"/auth/register"}>Start for free</Link>
             </div>
           </div>
         </div>
@@ -58,7 +58,6 @@ export default function Landing() {
           <div className={`${styles.blob} ${styles.yaleBlue}`} />
           <div className={`${styles.blob} ${styles.coolSky}`} />
           <div className={`${styles.blob} ${styles.icyBlue}`} />
-          <div className={`${styles.blob} ${styles.gray}`} />
         </div>
       </section>
       <section id="features" className={styles.features}>

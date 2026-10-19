@@ -28,8 +28,8 @@
   height: 48px;
   padding: 10px;
   text-align: center;
-  border-right: 1px solid black;
-  border-bottom: 1px solid black;
+  border-right: 1px solid var(--color-black);
+  border-bottom: 1px solid var(--color-black);
   font-family: Arial, sans-serif;
   font-weight: normal;
 }
@@ -53,23 +53,23 @@
 }
 
 .Monday {
-  background-color: var(--yale-blue);
+  background-color: var(--color-primary);
 }
 
 .Tuesday {
-  background-color: var(--blue-green);
+  background-color: var(--color-extra-1);
 }
 
 .Wednesday {
-  background-color: var(--cool-sky);
+  background-color: var(--color-extra-2);
 }
 
 .Thursday {
-  background-color: var(--maya-blue);
+  background-color: var(--color-secoundary);
 }
 
 .Friday {
-  background-color: var(--icy-blue);
+  background-color: var(--color-extra-3);
 }
 
 .Monday,
@@ -77,14 +77,14 @@
 .Wednesday,
 .Thursday,
 .Friday {
-  color: var(--porcelain);
+  color: var(--color-white);
 }
 
 .weekdayContainer {
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  border: 2px solid var(--black);
+  border: 2px solid var(--color-black);
   padding: 1rem 5rem;
   width: 25rem;
   font-size: 1.2rem;
@@ -105,7 +105,7 @@
 
 .modalTop button {
   border: none;
-  background-color: white;
+  background-color: var(--color-white);
   cursor: pointer;
   border-radius: 50%;
   display: flex;
@@ -154,7 +154,7 @@
     padding: 3rem 0;
     gap: 1rem;
 
-    border: 3px solid var(--black);
+    border: 3px solid var(--color-black);
     overflow-y: auto;
 
     min-height: 0;
@@ -162,7 +162,7 @@
 
     /* Firefox */
     scrollbar-width: thin;
-    scrollbar-color: var(--maya-blue) transparent;
+    scrollbar-color: var(--color-secoundary) transparent;
 }
 
 /* Chrome, Edge, Safari */
@@ -175,12 +175,12 @@
 }
 
 .subjectList::-webkit-scrollbar-thumb {
-    background: var(--maya-blue);
+    background: var(--color-secoundary);
     border-radius: 10px;
 }
 
 .subjectList::-webkit-scrollbar-thumb:hover {
-    background: var(--yale-blue);
+    background: var(--color-primary);
 }
 
 .head {
@@ -188,7 +188,7 @@
   justify-content: center;
   align-items: center;
   font-size: 1.5rem;
-  border: 3px solid var(--black);
+  border: 3px solid var(--color-black);
   border-bottom: none;
 }
 
@@ -209,7 +209,7 @@
 }
 
 .dropCell {
-    border: 1px dashed #aaa;
+    border: 1px dashed var(--color-muted);
     min-height: 4rem;
 }
 

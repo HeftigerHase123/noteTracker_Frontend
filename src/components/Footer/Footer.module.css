@@ -1,18 +1,18 @@
 .footer {
-  background-color: var(--yale-blue);
+  background-color: var(--color-primary);
   height: 15rem;
   display: grid;
   grid-template-rows: 2fr 1fr 1fr;
-  color: var(--porcelain);
+  color: var(--color-white);
 }
 
 .footer a{
-  color: var(--porcelain);
+  color: var(--color-white);
   text-decoration: none;
 }
 
 .footer a:hover {
-  color: var(--link-active);
+  color: var(--color-link-hover);
 }
 
 .flex {

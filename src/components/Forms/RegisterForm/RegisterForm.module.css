@@ -37,7 +37,7 @@
   padding: 12px;
   border-radius: 0.25rem;
   border: none;
-  background-color: var(--yale-blue);
+  background-color: var(--color-primary);
   color: white;
   margin-bottom: 1rem;
   margin-top: 2rem;
@@ -58,11 +58,11 @@
 
 .loginLink a {
   text-decoration: none;
-  color: var(--text-color);
+  color: var(--color-black);
 }
 
 .loginLink a:hover {
-  color: var(--link-active);
+  color: var(--color-link-hover);
 }
 
 .inputCountainer {
@@ -72,7 +72,7 @@
 }
 
 .inputs small {
-  color: var(--red);
+  color: var(--color-error);
 }
 
 /* Phone */
@@ -108,12 +108,12 @@
   border: none;
   padding: 0.25rem 0.5rem;
   font-size: 0.75rem;
-  color: var(--text-color);
+  color: var(--color-black);
   cursor: pointer;
 }
 
 .toggleButton:hover {
-  color: var(--link-active);
+  color: var(--color-link-hover);
 }
 
 /* Loading */

@@ -60,7 +60,7 @@
   padding: 12px;
   border-radius: 0.25rem;
   border: none;
-  background-color: var(--yale-blue);
+  background-color: var(--color-primary);
   color: white;
   margin-bottom: 1rem;
   transition: filter 0.2s, opacity 0.2s;
@@ -79,12 +79,12 @@
 
 .registerLink a {
   text-decoration: none;
-  color: var(--text-color);
+  color: var(--color-black);
 }
 
 .forgot p:hover,
 .registerLink a:hover {
-  color: var(--link-active);
+  color: var(--color-link-hover);
 }
 
 .inputs > div {
@@ -94,7 +94,7 @@
 }
 
 .inputs small {
-  color: var(--red);
+  color: var(--color-error);
 }
 
 .spinner {
@@ -131,12 +131,12 @@
   border: none;
   padding: 0.25rem 0.5rem;
   font-size: 0.75rem;
-  color: var(--text-color);
+  color: var(--color-black);
   cursor: pointer;
 }
 
 .toggleButton:hover {
-  color: var(--link-active);
+  color: var(--color-link-hover);
 }
 
 @media screen and (min-width: 767px) {

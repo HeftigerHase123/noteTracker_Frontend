@@ -4,7 +4,7 @@
   border-radius: 0.5rem;
   font-weight: 900;
   border: none;
-  background-color: var(--red);
+  background-color: var(--color-error);
   color: var(--porcelain);
   display: flex;
   gap: 0.5rem;

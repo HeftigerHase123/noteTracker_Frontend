@@ -1,5 +1,5 @@
 .header {
-  background-color: var(--porcelain);
+  background-color: var(--color-background);
   height: 5rem;
   max-width: 100%;
   display: flex;
@@ -17,5 +17,5 @@
   align-items: center;
   height: 100%;
   gap: 1rem;
-  color: var(--text-color);
+  color: var(--color-black);
 }
